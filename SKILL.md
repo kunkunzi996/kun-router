@@ -1,10 +1,10 @@
 ---
 name: kun-coding-router
 summary: Kun Coding Router：项目流程路由器。根据用户当前问题自动判断项目阶段，按需启用规格生成、AI-SDD、Task Spec、架构门、测试门、安全施工、Computer-Use E2E、验收与 Git，而不是每次跑完整流程。
-description: Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, or save a vibe coding project. This skill is a router: it decides which lightweight workflow/reference to use based on task type and PROJECT_STATE.md. It integrates qiaomu-ai-prd-inspired spec generation patterns such as AI 速读卡, 硬约束/推荐默认/发挥空间, ASCII layouts, module states, data models, numeric metrics, acceptance scripts, and implementer handoff, while preserving small-scope Codex-safe construction and optional Computer-Use E2E validation. Retrospective/knowledge distillation is intentionally excluded and should be handled by a separate skill.
+description: Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, or save a vibe coding project. This skill is a router: it decides which lightweight workflow/reference to use based on task type and PROJECT_STATE.md. It integrates qiaomu-ai-prd-inspired spec generation patterns such as AI 速读卡, 硬约束/推荐默认/发挥空间, ASCII layouts, module states, data models, numeric metrics, acceptance scripts, and implementer handoff, while preserving small-scope Codex-safe construction and optional Computer-Use E2E validation. Personal knowledge distillation is intentionally excluded. V0.6 adds a project-scoped cleanup gate for Codex projects: synchronize project docs, PROJECT_STATE, README, AGENTS/CLAUDE rules, and next-step handoff after verified changes, without default Obsidian or personal knowledge-base handling.
 ---
 
-# Kun Coding Router V0.5：项目流程路由器
+# Kun Coding Router V0.6：项目流程路由器
 
 ## 一句话定位
 
@@ -67,8 +67,19 @@ description: Use when the user wants to start, plan, build, continue, modify, de
 - **安全施工**：Codex Safe Construction。
 - **真实用户验收**：Computer-Use E2E Gate。
 - **保存汇报**：Verification / Git / Report。
+- **项目洁癖**：Project Cleanup Gate，阶段收尾时同步项目文档、项目状态、AI 施工规则和下一轮入口。
 
 用户可以只说“帮我开工”“继续开发”“修 bug”“跑通验收”“保存一下”，不需要说具体 skill 名称。
+
+## V0.6 新增边界：项目洁癖，不是个人知识库沉淀
+
+V0.6 吸收 `neat-freak / 洁癖` 的核心思想，但只聚焦 Codex 项目内部：代码变了，项目文档、状态文件、AI 施工规则和下一轮入口也要同步。
+
+默认不处理 Obsidian。
+默认不做个人知识库归档。
+默认不把一次性项目细节沉淀成通用方法论。
+
+只有当本轮产生明显跨项目可复用经验时，允许在报告中标记为“候选沉淀”，但不直接处理个人知识库。
 
 ## Task Type Router
 
@@ -172,13 +183,33 @@ description: Use when the user wants to start, plan, build, continue, modify, de
 
 执行重点：先确认环境、分支、持久化、回滚方式，不要擅自暴露密钥或改生产数据。
 
-### 8. 保存 / Git / 收尾
+### 8. 保存 / Git
 
 启用：
 
 - `references/11-verification-git-report.md`
 
 执行重点：先验收，再提交。不能假装 push。不能在非 Git 仓库里说已保存。
+
+### 9. 项目收尾 / 项目洁癖 / 文档同步
+
+触发表达：
+
+- 收尾
+- 整理一下项目
+- 同步文档
+- 项目状态更新一下
+- 准备新开对话
+- 下一轮 Codex 怎么接
+- 阶段做完了
+- 做完后把文档和状态对齐
+
+启用：
+
+- `references/11-verification-git-report.md`
+- `references/12-project-cleanup-gate.md`
+
+执行重点：只做当前代码项目内部的“洁癖”：同步 README、PROJECT_STATE、docs、AGENTS.md/CLAUDE.md 中必要的项目规则和下一轮入口。默认不处理 Obsidian 或个人知识库。
 
 ## qiaomu-ai-prd 吸收原则
 
@@ -202,4 +233,5 @@ description: Use when the user wants to start, plan, build, continue, modify, de
 - 先定位，再选择流程，再执行。
 - 小步推进，少量修改，可验收，可回滚。
 - 不要为了流程完整而制造负担。
-- 不要把复盘沉淀混入本 Skill；项目复盘应交给单独 Skill。
+- 不要把个人知识库沉淀混入本 Skill；项目复盘和 Obsidian 归档应交给单独流程。
+- 项目洁癖只在阶段完成、功能完成、部署完成、准备新开对话或用户明确要求时启用，不要让每个小改都变成文档工程。

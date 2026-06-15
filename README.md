@@ -1,20 +1,19 @@
-# Kun Coding Router V0.5：项目流程路由器
+# Kun Coding Router V0.6：项目流程路由器
 
 这是昆昆子的个人 Vibe Coding 总入口 Skill。
 
 它的核心不是“写一个更大的万能 Skill”，而是做一个**路由器**：根据当前问题判断项目阶段，自动选择最合适的子流程，避免新手每次忘记该用哪个 Skill。
 
-## V0.5 关键变化
+## V0.6 关键变化
 
-相比 V0.4，本版本新增：
+相比 V0.5，本版本新增“项目洁癖 Gate”：
 
-1. 正式改名为 **Kun Coding Router：项目流程路由器**。
-2. 新增 `references/00-skill-index.md`，作为技能索引和触发表。
-3. 新增 `references/02-spec-start-qiaomu-inspired.md`，吸收 qiaomu-ai-prd 的规格生成方法。
-4. AI-SDD 模板加入：AI 速读卡、硬约束/推荐默认/发挥空间、ASCII 页面布局、模块状态、数字化性能指标、验收剧本、开发者交接说明。
-5. 增加中文短别名：开工规格、执行规格、单次任务、测试门、真实用户验收等，降低记忆成本。
-6. 保持 V0.4 的 Computer-Use E2E Gate。
-7. 继续排除“复盘沉淀”，复盘应作为单独 Skill。
+1. 新增 `references/12-project-cleanup-gate.md`，用于功能完成、阶段收尾、部署后或新开对话前的项目内部文档同步。
+2. 将“收尾”拆成两层：`11-verification-git-report.md` 负责验收/Git/完成报告，`12-project-cleanup-gate.md` 负责 README、PROJECT_STATE、docs、AGENTS.md/CLAUDE.md 的必要同步。
+3. 明确洁癖范围：只处理当前 Codex 代码项目，不默认处理 Obsidian 或个人知识库。
+4. 增加“AGENTS.md 不是变更日志”规则，避免 AI 启动上下文被历史流水账污染。
+5. 增加“项目状态防腐”思路：代码变了，项目状态、架构说明、运行方式、下一轮入口也要跟着更新。
+6. 保留 V0.5 的轻量 Router 结构，不把洁癖流程塞进主 `SKILL.md`。
 
 ## 设计目标
 
@@ -46,6 +45,8 @@ project-root/
 │   ├── AI_SDD.md
 │   ├── ARCHITECTURE_SNAPSHOT.md
 │   ├── DESIGN_SPEC.md
+│   ├── CHANGES.md
+│   ├── TROUBLESHOOTING.md
 │   └── TASKS/
 │       └── TASK_001_xxx.md
 └── src/
@@ -82,6 +83,19 @@ Router 应该启用：
 - E2E Gate（如涉及多页面交互）
 - Verification / Git / Report
 
+### 阶段收尾 / 项目洁癖
+
+```text
+使用 Kun Coding Router，本轮功能已经验收通过。请做一次项目洁癖，更新项目状态、必要文档和下一轮 Codex 入口。
+```
+
+Router 应该启用：
+
+- Verification / Git / Report
+- Project Cleanup Gate
+
+重点：只整理当前项目内部文档和状态，不默认处理 Obsidian。
+
 ### Bug 修复
 
 ```text
@@ -98,7 +112,7 @@ Router 应该启用：
 ## 文件说明
 
 ```text
-kun-coding-router-v0.5/
+kun-coding-router-v0.6/
 ├── SKILL.md
 ├── README.md
 └── references/
@@ -114,6 +128,7 @@ kun-coding-router-v0.5/
     ├── 09-codex-safe-construction.md
     ├── 10-computer-use-e2e-gate.md
     ├── 11-verification-git-report.md
+    ├── 12-project-cleanup-gate.md
     └── PROJECT_STATE.template.md
 ```
 
@@ -124,3 +139,5 @@ SOP 是地图，不是每次都必须从起点走到终点。
 Skill 是导航，不是把整张地图塞进当前上下文。
 
 Router 的价值是：让用户不用记 Skill 名字，也能在正确阶段使用正确流程。
+
+V0.6 的新增价值是：让项目不只会开工和施工，也会在阶段完成后“防腐”。代码、文档、AI 规则、项目状态和下一轮入口保持一致，避免下一轮 Codex 基于过期信息继续施工。

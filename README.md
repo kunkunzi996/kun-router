@@ -1,4 +1,4 @@
-# Kun Coding Router V0.7.1：项目流程调度器
+# Kun Coding Router V0.7.2：项目流程调度器
 
 这是昆昆子的个人 Vibe Coding 总入口 Skill。
 
@@ -10,7 +10,8 @@
 
 - **V0.6.2**：引入开工门禁（Pre-Coding Gate），按真实流程重排编号。
 - **V0.7**：调度器化改造，新增 Skill 调用分层、任务路由表、Project Setup、Handoff Protocol。
-- **V0.7.1（本版）**：去重减负——SKILL.md 继续瘦身、合并安全哨兵、新增轻量路由与自降级、模板拆 minimal/完整、补反面示例。完整清单见 `CHANGELOG.md`。
+- **V0.7.1**：去重减负——SKILL.md 继续瘦身、合并安全哨兵、新增轻量路由与自降级、模板拆 minimal/完整、补反面示例。
+- **V0.7.2（本版）**：一致性修订——路由表补回开工门禁、Project Setup 默认改最小模板、README 去掉已删的 RENAME_MAP、清编码坏字符。完整清单见 `CHANGELOG.md`。
 
 V0.7.1 在 V0.6.2 完整底座（01-14）之上，把 V0.7 的 4 个新文件接为 15-18，并保留开工门禁。
 
@@ -31,7 +32,7 @@ V0.7.1 在 V0.6.2 完整底座（01-14）之上，把 V0.7 的 4 个新文件接
 
 ---
 
-## 设计���标
+## 设计目标
 
 用户不需要记住 qiaomu-ai-prd / AI-SDD / Pre-Coding Gate / Architecture Gate / Test First Gate / Computer-Use E2E / Project Cleanup / Backend Acceptance / Project Setup / Handoff 这些名字。
 
@@ -151,7 +152,6 @@ kun-vibe-coding-skill/
 ├── SKILL.md
 ├── README.md
 ├── CHANGELOG.md
-├── RENAME_MAP.md
 └── references/
     ├── 00-skill-index.md
     ├── 01-idea-pressure-test.md

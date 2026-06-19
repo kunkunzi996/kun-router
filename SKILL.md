@@ -2,8 +2,8 @@
 name: kun-coding-router
 description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, hand off, or save a vibe coding project. V0.7.1 keeps Kun Coding Router as a project-manager-style router: it diagnoses task type and project phase, selects the right references/sub-skills, orders them, enforces safety pauses, and requires concrete outputs. It preserves the V0.6.2 Pre-Coding Gate, qiaomu-ai-prd-inspired AI-SDD, Codex-safe construction, Test First Gate, Computer-Use E2E, project cleanup, backend architecture acceptance, and adds skill invocation layers, task routing map, project setup, and handoff protocol. A light routing mode and self-downgrade rule keep small changes cheap; merged safety sentinels and reverse examples reduce mistakes."
 metadata:
-  short-description: "Kun Coding Router V0.7.1：项目流程调度器。判断阶段、路由子 Skill、安排顺序、强制确认、验收收尾。"
-  version: "0.7.1"
+  short-description: "Kun Coding Router V0.7.2：项目流程调度器。判断阶段、路由子 Skill、安排顺序、强制确认、验收收尾。"
+  version: "0.7.2"
 ---
 
 # Kun Coding Router V0.7.1：项目流程调度器
@@ -125,7 +125,7 @@ Router 不直接替代子 Skill。
 1. **后端未验收却要写业务**：项目中已存在 `routes/`、`services/`、`controllers/`、`models/`、`api/`、`server/`、`backend/` 等后端目录，但 `PROJECT_STATE.md` 中"后端骨架验收状态"不是"已验收"或"不适用"；或用户表达"加功能 / 写业务 / 做登录 / 做支付 / 做注册 / 做接口 / 做 CRUD"，或说"后端搭好了 / 后端写完了"。
 2. **缺少项目档案就要写业务**：用户要求直接写功能，但项目缺少 `PROJECT_STATE.md`。
 3. **大功能没有边界**：用户要求大功能，但没有 MVP 边界、验收标准或任务拆解。
-4. **多模块改动无回归方式**：用户要求改动多个模块，但没有回归验���方式。
+4. **多模块改动无回归方式**：用户要求改动多个模块，但没有回归验收方式。
 5. **高风险破坏性操作**：AI 即将安装新依赖、重构目录、删除文件、改数据库结构、改部署方式或改环境变量。
 6. **改到具体高风险面**：本轮将改动以下任一具体对象——共享数据模型 / schema、对外 API 契约、鉴权或权限逻辑、路由表、构建或部署脚本——但没有测试或验收路径。
 7. **跨窗口接续没读档**：用户表达"新窗口继续 / 接着上次"，但还没读取 `PROJECT_STATE.md` 或 `HANDOFF.md`。

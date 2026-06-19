@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## V0.7.2
+
+一致性修订，不加新功能。修复 V0.7.1 中路由表与 SKILL/索引之间的几处不一致。
+
+### 修复
+
+- `references/16-task-routing-map.md`：新项目路由补回 `03-pre-coding-gate.md`（进入施工前），与 SKILL.md「进施工前必须过开工门禁」对齐。
+- `references/16-task-routing-map.md`：已有项目大功能路由补上 `03-pre-coding-gate.md`（影响页面/数据/API/架构/目录时）。
+- `references/16-task-routing-map.md`：Project Setup 默认模板改为 `PROJECT_STATE.minimal.template.md`，与 `00-skill-index.md`、`17-project-setup.md` 一致（新手默认走最小版）。
+- `README.md`：从文件树中移除已删除的 `RENAME_MAP.md`。
+- `README.md` / `SKILL.md`：清除「设计目标」「回归验收方式」处的编码坏字符。
+
 ## V0.7.1
 
 去重与减负，不加新功能。在 V0.6.2 完整底座（references 01-14）之上，把 V0.7 的 4 个新文件接为 15-18，并保留开工门禁。

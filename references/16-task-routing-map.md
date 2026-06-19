@@ -36,8 +36,9 @@
 3. `04-product-brief-mvp.md`
 4. `05-ai-sdd-template.md`
 5. `17-project-setup.md`
-6. 必要时 `07-design-gate.md`
-7. 必要时 `08-architecture-gate.md`
+6. 准备进入代码施工前：`03-pre-coding-gate.md`
+7. 必要时 `07-design-gate.md`
+8. 必要时 `08-architecture-gate.md`
 
 ## 禁止
 
@@ -72,13 +73,14 @@
 3. `04-product-brief-mvp.md` 的范围锁定部分
 4. `05-ai-sdd-template.md` 的变更规格部分
 5. `06-task-spec-template.md`
-6. `08-architecture-gate.md`
-7. `09-test-first-gate.md`
-8. `10-codex-safe-construction.md`
-9. 复杂交互时 `11-computer-use-e2e-gate.md`
-10. `12-verification-git-report.md`
-11. `13-project-cleanup-gate.md`
-12. 准备新窗口时 `18-handoff-protocol.md`
+6. 如本轮会进入施工且影响页面 / 数据 / API / 架构 / 目录：先过 `03-pre-coding-gate.md`
+7. `08-architecture-gate.md`
+8. `09-test-first-gate.md`
+9. `10-codex-safe-construction.md`
+10. 复杂交互时 `11-computer-use-e2e-gate.md`
+11. `12-verification-git-report.md`
+12. `13-project-cleanup-gate.md`
+13. 准备新窗口时 `18-handoff-protocol.md`
 
 ## 禁止
 
@@ -362,7 +364,7 @@
 ## 路由
 
 1. `17-project-setup.md`
-2. `PROJECT_STATE.template.md`
+2. 默认使用 `PROJECT_STATE.minimal.template.md`；项目较大时再升级到 `PROJECT_STATE.template.md`
 3. 必要时建议创建 `CONTEXT.md`
 4. 必要时建议创建 `ACCEPTANCE.md`
 5. 必要时建议创建 `DECISIONS.md`

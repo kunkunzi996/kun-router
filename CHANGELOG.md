@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## V0.7.5
+
+Git 保存确认小补丁：防止普通开发、Bug 修复或小改完成后，AI 未经用户确认就自动 `commit` / `push`。
+
+### 调整
+
+- `references/12-verification-git-report.md`：Git 保存规则改为默认只输出保存建议，不实际执行 `git add` / `git commit` / `git push`；只有用户明确要求、提前授权，或当前任务本身就是“保存 / Git”时才允许执行。
+- `SKILL.md`：「永远遵守」新增 Git commit / push 最高约束：版本保存动作必须先获得用户明确要求或提前授权。
+
 ## V0.7.4
 
 强制「用户手动验收指引」，让每轮完成后都告诉用户怎么亲自验收。

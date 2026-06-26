@@ -47,6 +47,7 @@
 - docs/。
 - AGENTS.md / CLAUDE.md。
 - TASKS / CHANGES / TROUBLESHOOTING 等项目内文档。
+- CONTEXT.md / ACCEPTANCE.md / DECISIONS.md（如已存在，按需同步）。
 - 下一轮 Codex 入口。
 
 不默认处理：
@@ -202,6 +203,7 @@ README 面向人类和第一次接手的 AI，应该短、准、能启动。
 3. AGENTS.md / CLAUDE.md。
 4. docs/ 中受影响文件。
 5. TASKS / CHANGES / TROUBLESHOOTING。
+6. CONTEXT.md / ACCEPTANCE.md / DECISIONS.md（按需）：仅当本轮出现稳定术语、验收 / 回归路径或关键决策时同步；零散、不稳定信息不写。写入标准见 `17-project-setup.md`。
 
 先更新“下一轮会立刻用到”的文件，再处理详细文档。
 

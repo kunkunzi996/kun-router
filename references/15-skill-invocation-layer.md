@@ -92,10 +92,14 @@ Acceptance 负责验收。
 | Codex Safe Construction | 10-codex-safe-construction.md | 小步修改、少动文件、可回滚 |
 | Computer-Use E2E | 11-computer-use-e2e-gate.md | 真实用户路径验收 |
 | Verification / Git / Report | 12-verification-git-report.md | 验收、Git、完成报告 |
-| Project Cleanup Gate | 13-project-cleanup-gate.md | 项目文档和状态防腐 |
+| Project Cleanup Gate | 13-project-cleanup-gate.md | 已验收后按项目文档、项目规则、项目级记忆三层核对与收口 |
 | Backend Acceptance | 14-backend-architecture-acceptance.md | 后端骨架写业务前验收 |
 | Project Setup | 17-project-setup.md | 项目第一次接入建档 |
 | Handoff Protocol | 18-handoff-protocol.md | 跨窗口交接 |
+
+---
+
+`13-project-cleanup-platforms.md` 和 `13-project-cleanup-matrix.md` 只由 Project Cleanup Gate 按需读取：前者处理平台、记忆归属和权限边界，后者处理同步矩阵、反向清理和规范审计。二者不是用户主动调用型 Skill，也不应被 Router 每轮自动加载。
 
 ---
 

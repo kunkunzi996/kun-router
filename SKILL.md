@@ -2,11 +2,11 @@
 name: kun-coding-router
 description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, hand off, save, or clean up / tidy (Chinese 洁癖 / 收尾 / 项目整理) a vibe coding project. Kun Coding Router is a project-manager-style router: it diagnoses task type and project phase, selects and orders the right references/sub-skills, enforces safety pauses at high-risk steps, and requires concrete outputs with acceptance steps. It keeps a Pre-Coding Gate, AI-SDD specs, Codex-safe construction, test-first and backend-acceptance gates, project setup/cleanup, handoff, and a Git save-confirmation guard. Layered context rules read PROJECT_STATE/HANDOFF by default and DECISIONS/CONTEXT/ACCEPTANCE only when a task triggers them. First-Principles and Adversarial Review prompts add root-cause and pre-launch rigor, triggered by scenario and never applied to small changes. A light routing mode keeps small changes cheap."
 metadata:
-  short-description: "Kun Coding Router V0.7.7：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、验收收尾；第一性原理找根因 + 对抗式审查保上线。"
-  version: "0.7.7"
+  short-description: "Kun Coding Router V0.7.8：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、验收收尾；三层知识编辑让项目文档、规则和记忆可追溯。"
+  version: "0.7.8"
 ---
 
-# Kun Coding Router V0.7.7：项目流程调度器
+# Kun Coding Router V0.7.8：项目流程调度器
 
 ## 一句话定位
 
@@ -322,7 +322,7 @@ UI 小改 / 文案
 | 验收 / 测试 / 跑通 | 第 6 节 | 能跑真实路径就跑，不只看代码 |
 | 部署 / 上线 | 第 7 节 | 先确认环境、分支、回滚，不暴露密钥 |
 | 保存 / Git | 第 8 节 | 先验收再提交，不假装 push |
-| 项目收尾 / 洁癖 | 第 9 节 | 只同步项目内部文档，不碰 Obsidian |
+| 项目收尾 / 洁癖 | 第 9 节 | 三层清理；删除待拍板；不碰 Obsidian |
 | 后端骨架验收 | 第 10 节 | 不写业务，只验收骨架 |
 | Project Setup | 第 11 节 | 先建最小档案再施工 |
 | Handoff | 第 12 节 | 生成 HANDOFF.md，写清下一轮入口 |
@@ -407,6 +407,7 @@ UI 小改 / 文案
 - 用户嫌重时执行自降级规则，不要固执。
 - 哨兵触发时，再嫌重也要先确认。
 - 不要把个人知识库沉淀混入本 Skill；项目复盘和 Obsidian 归档应交给单独流程。
-- 项目洁癖只在阶段完成、功能完成、部署完成、准备新开对话或用户明确要求时启用，不要让每个小改都变成文档工程。
+- 项目洁癖只在阶段完成、功能完成、部署完成、准备新开对话或用户明确要求时启用；按项目文档、项目规则、项目级记忆三层处理，不要让每个小改都变成文档工程。
+- 项目洁癖默认只处理当前项目；删除、重命名、移动、全局规则修改和跨项目写入必须列入待用户拍板，Codex 机器记忆只检查和报告。
 - Handoff 是跨窗口接力，不是长篇复盘；只写下一轮必须知道的内容。
 - 复杂问题、找根因、架构决策、AI 想重构时，用「第一性原理」逼出本质解，别让 AI 用类比推理糊一个治标方案；功能上线前或定期复盘时，用「对抗式审查」找恶意 / 边界 BUG。两者都是按需触发的轻量思维，绝不对小改滥用（见「两个通用思维」）。

@@ -36,7 +36,7 @@ V0.7.1 新增"分组"列：把 references 按职责归为四组（Flows 流程 /
 | Gates | 安全施工 | `10-codex-safe-construction.md` | 控制 Codex 小步、少改、可回滚 | 所有改代码任务 |
 | Gates | 真实用户验收 | `11-computer-use-e2e-gate.md` | 鼠标键盘/浏览器/桌面端到端验证 | 多页面 / 复杂交互 / 部署后验证 |
 | Gates | 保存汇报 | `12-verification-git-report.md` | 验收、Git、完成报告 | 做完了 / 保存一下 / 提交 |
-| Gates | 项目洁癖 | `13-project-cleanup-gate.md` | 阶段收尾时同步 README、PROJECT_STATE、docs、AGENTS/CLAUDE 规则和下一轮入口 | 收尾 / 同步文档 / 项目状态 / 新开对话前 |
+| Gates | 项目洁癖 | `13-project-cleanup-gate.md` | 阶段收尾时按“项目文档、项目规则、项目级记忆”三层核对事实、规则和下一轮入口 | 收尾 / 同步文档 / 项目状态 / 新开对话前 |
 | Gates | 后端验收官 | `14-backend-architecture-acceptance.md` | 后端骨架搭建完成后验收是否能进入业务开发 | 后端骨架搭完 / 后端越写越乱 / 准备写业务 |
 | Meta | Skill 调用分层 | `15-skill-invocation-layer.md` | 定义用户主动调用型与 Router 调度型，避免 Router 越写越胖 | 升级 Router / 梳理 Skill 架构 |
 | Meta | 任务路由表 | `16-task-routing-map.md` | 明确不同任务类型应该启用哪些流程、禁止什么、产物是什么 | Router 判断任务类型时 |
@@ -44,6 +44,10 @@ V0.7.1 新增"分组"列：把 references 按职责归为四组（Flows 流程 /
 | Setup | Handoff 协议 | `18-handoff-protocol.md` | 跨窗口 / 跨会话接续，生成 HANDOFF.md | 下次继续 / 新窗口继续 / 先到这里 |
 | 模板 | 项目状态模板 | `PROJECT_STATE.minimal / .template.md` | 项目户口本，分最小版与完整版 | Project Setup 时建档 |
 | 模板 | 交接模板 | `HANDOFF.minimal / .template.md` | 下班纸条，分最小版与完整版 | 跨窗口交接时生成 |
+
+---
+
+`13-project-cleanup-platforms.md` 与 `13-project-cleanup-matrix.md` 是项目洁癖门的按需内部细则：前者只在发现 Agent 记忆或平台规则时读取，后者只在功能、API、数据、部署、规则审计或反向清理时读取。它们不是用户主动调用型 Skill。
 
 ---
 
@@ -114,7 +118,7 @@ V0.7.1 新增"分组"列：把 references 按职责归为四组（Flows 流程 /
 2. 项目洁癖
 3. Handoff 协议（如准备跨窗口）
 
-只处理当前代码项目内部的文档和状态同步，不默认处理 Obsidian 或个人知识库。
+按项目文档、项目规则、项目级记忆三层核对当前事实；删除、全局规则和跨项目动作一律待用户拍板，不默认处理 Obsidian 或个人知识库。
 
 ### 用户说"项目先分类 / 建档 / 新窗口要自动接上 / 下次项目开始前"
 
@@ -149,6 +153,6 @@ V0.7.1 新增"分组"列：把 references 按职责归为四组（Flows 流程 /
 - Bug 修复：跳过产品定位，先写复现路径。
 - 只是保存：先检查验收和 Git 状态，不要重新规划。
 - 只是小改：不强制项目洁癖，除非影响 README、PROJECT_STATE、架构、API、数据模型、运行方式、AI 施工规则或下一轮入口。
-- 项目洁癖：只同步项目内部文档，不默认处理 Obsidian。
+- 项目洁癖：只处理当前项目三层知识，不默认处理 Obsidian；不自动删除、不默认改全局规则或其他项目。
 - 用户明确说"不要重写 PRD / 不要重做规格"：必须遵守。
 - Router 不要重复展开子 Skill 的所有细则，只说明"调用谁、为什么、产物是什么"。

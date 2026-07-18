@@ -1,4 +1,4 @@
-# Kun Coding Router 流程图（V0.7.7）
+# Kun Coding Router 流程图（V0.7.8）
 
 > 这份文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
 > 看不懂文字版没关系，先看图，每张图下面都有大白话说明。
@@ -35,10 +35,12 @@ flowchart TD
     I --> J[小步施工]
     J --> K[✅ 完成后必给『用户手动验收指引』<br/>打开哪→点什么→看到什么算成功→刷新查什么]
     K --> L{需要收尾/交接吗}
-    L -- 阶段完成 --> M[项目洁癖：同步 PROJECT_STATE]
+    L -- 阶段完成 --> M[项目洁癖：三层清理<br/>文档 + 项目规则 + 项目记忆]
     L -- 换窗口继续 --> N[写 HANDOFF.md 交接纸条]
     L -- 都不需要 --> Z[结束]
-    M --> Z
+    M --> M1{删除或越界动作？}
+    M1 -- 是：待你拍板 --> Z
+    M1 -- 否：同步完成 --> Z
     N --> Z
 ```
 
@@ -77,7 +79,7 @@ flowchart LR
     T6[6.验收/测试] --> T6x[测试门→E2E→验收报告→洁癖]
     T7[7.部署上线] --> T7x[读档→架构门→安全施工→<br/>E2E→验收→洁癖]
     T8[8.保存Git] --> T8x[先验收→给Git保存建议→<br/>用户确认后提交/推送]
-    T9[9.项目收尾/洁癖] --> T9x[验收→项目洁癖→<br/>必要时交接]
+    T9[9.项目收尾/洁癖] --> T9x[验收→三层知识编辑→<br/>删除/越界待拍板→必要时交接]
     T10[10.后端骨架验收] --> T10x[架构门→后端验收官7步→<br/>验收报告。不写业务！]
     T11[11.Project Setup] --> T11x[建最小档案<br/>PROJECT_STATE.minimal]
     T12[12.Handoff交接] --> T12x[写HANDOFF.md：<br/>下一轮入口/必读/风险/禁区]
@@ -117,6 +119,7 @@ flowchart TD
 - **第二道·开工门禁**：正式写代码前的「体检」，6 项缺哪补哪；小修小补免检。
 - **第三道·验收收口**：干完活必须告诉你怎么亲自验，不准只说「已完成」。
 - **上线前·对抗式审查（V0.7.7，可选增强，不是第四道硬门）**：正向验收之外，让 AI 站在恶意用户角度用畸形/超大/时间错乱数据反向找 BUG；复杂功能可用当前工具支持的多 Agent 审查。另外修 Bug、想重构时，先加一句「从第一性原理出发」，逼 AI 找治本解而不是糊补丁。
+- **阶段收尾·三层知识编辑（V0.7.8）**：在已验收后核对项目文档、项目规则和明确归属的项目记忆；删除、全局规则、跨项目和 Codex 机器记忆不自动处理，统一先列待你拍板。
 
 ---
 
@@ -145,7 +148,7 @@ flowchart TD
 | 安全施工 | `references/10-codex-safe-construction.md` |
 | Computer-Use E2E | `references/11-computer-use-e2e-gate.md` |
 | **验收 / Git / 完成报告（关卡 3）** | `references/12-verification-git-report.md` |
-| 项目洁癖 | `references/13-project-cleanup-gate.md` |
+| 项目洁癖 | `references/13-project-cleanup-gate.md`（主流程）；按需读取 `13-project-cleanup-platforms.md`、`13-project-cleanup-matrix.md` |
 | 后端验收官 | `references/14-backend-architecture-acceptance.md` |
 | Skill 调用分层 | `references/15-skill-invocation-layer.md` |
 | **任务路由表（图 2 来源）** | `references/16-task-routing-map.md` |

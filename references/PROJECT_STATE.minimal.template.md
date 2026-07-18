@@ -1,5 +1,5 @@
 <!--
-生成于：Kun Coding Router v0.7.1
+生成于：Kun Coding Router v0.8.0
 生成日期：YYYY-MM-DD
 模板类型：PROJECT_STATE 最小版（新手 / 小项目默认用这个）
 需要更细的字段时，升级到 PROJECT_STATE.template.md（完整版）
@@ -20,6 +20,40 @@
 
 ## 当前目录 / 分支
 
+
+## 流水线挡位
+
+手动挡 / 自动挡（没写 = 手动挡）
+
+- 当前挡位：手动挡
+- 自动挡准入：不适用 / 待检查 / 通过 / 已降级（原因）
+- 自动挡最近确认日期 / 授权环境：
+
+## 项目流水线契约（仅自动挡填写）
+
+- 基准分支：
+- 远程名 / 仓库：
+- 主工作区绝对路径：
+- feature worktree 绝对路径：
+- feature 分支：
+- PR 工具：`gh` 已认证 / 不可用
+- 合并策略：merge / squash / rebase
+- CI：提供方 / 必过检查 / 等待命令 / 超时（默认 30 分钟）
+- 部署：不适用 / 目标环境 / 部署命令
+- 线上地址 / 冒烟步骤 / 回滚命令 / 回滚模式（自动 / 手动）：
+- worktree 清理：AI 可执行 / 用户手动（以项目规则为准）
+
+## 当前流水线运行状态
+
+- 当前任务：
+- 当前状态：未开始 / READY / VERIFIED / COMMITTED / BASE_SYNCED / REVERIFIED / PUSHED / PR_CREATED / CI_GREEN / MERGED / PRIMARY_SYNCED / DEPLOYED / SMOKE_GREEN / WAITING_CLEANUP_CONFIRM / DONE
+- feature 分支 / worktree / PR：
+- 最近更新时间：
+- 停止原因：
+- 恢复入口：
+- 恢复前外部核实：未核实 / 已用 Git + gh + CI / 部署平台核实
+
+> 停止、跨窗口、等待清理确认或 DONE 时更新；外部事实优先。不得为了状态变化单独 commit / push。
 
 ## 启动命令
 

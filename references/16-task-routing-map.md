@@ -10,13 +10,14 @@
 
 ## 路由判断总原则
 
-每次判断任务时，先看五件事：
+每次判断任务时，先看六件事：
 
 1. 用户是在做新项目，还是已有项目？
 2. 本轮是规划、施工、修 Bug、验收、部署、保存，还是交接？
 3. 本轮是否影响架构、数据、API、运行命令、环境变量或多模块？
 4. 项目是否已有 `PROJECT_STATE.md` / `HANDOFF.md` / 后端验收状态？
 5. 本轮是否触发辅助上下文读取：按 SKILL.md「分层读档 B 段·辅助上下文触发表」判断是否读 `DECISIONS.md` / `CONTEXT.md` / `ACCEPTANCE.md`。
+6. 项目流水线挡位是什么；若是自动挡，项目流水线契约是否完整（没写挡位 = 手动挡，契约不完整 = 降级手动挡）。
 
 > 下面各任务小节只标注"本轮通常需要哪些辅助上下文"，具体触发条件统一以 SKILL.md 的触发表为准，不在此重复对应关系。
 
@@ -83,8 +84,9 @@
 10. `10-codex-safe-construction.md`
 11. 复杂交互时 `11-computer-use-e2e-gate.md`
 12. `12-verification-git-report.md`
-13. `13-project-cleanup-gate.md`
-14. 准备新窗口时 `18-handoff-protocol.md`
+13. `19-pipeline-loop.md`（feature 分支收口）
+14. `13-project-cleanup-gate.md`
+15. 准备新窗口时 `18-handoff-protocol.md`
 
 ## 禁止
 
@@ -125,6 +127,7 @@
 7. 复杂交互时 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
 9. 必要时 `13-project-cleanup-gate.md`
+10. 必要时 `19-pipeline-loop.md`（本轮在 feature 分支 / worktree 施工时）
 
 ## 禁止
 
@@ -195,10 +198,19 @@
 
 ## 路由
 
+### 手动挡
+
 1. 读取相关文件
 2. `06-task-spec-template.md` 极简版
 3. `10-codex-safe-construction.md`
-4. `12-verification-git-report.md`
+4. `12-verification-git-report.md`（最小验收 → Git 保存建议）
+
+### 自动挡
+
+1. `03-pre-coding-gate.md` 第 6/7 项轻量门禁
+2. `10-codex-safe-construction.md`
+3. `12-verification-git-report.md`（最小验收）
+4. `19-pipeline-loop.md` 流水线收口
 
 ## 默认跳过
 
@@ -208,6 +220,14 @@
 - 完整 AI-SDD
 - 架构门
 - 项目洁癖
+- 完整开工门禁、完整 Test First、完整 E2E
+
+两种挡位都保持 3 块轻量报告；自动挡只补第 6/7 项轻量门禁和 19 收口，不恢复全套重流程。
+
+## 禁止
+
+- 自动挡小改不得直推基准分支。
+- 不得因为要走 19 就恢复全套产品 / 架构流程。
 
 ## 何时升级
 
@@ -269,7 +289,8 @@
 4. `10-codex-safe-construction.md`
 5. `11-computer-use-e2e-gate.md`
 6. `12-verification-git-report.md`
-7. `13-project-cleanup-gate.md`
+7. `19-pipeline-loop.md`（合并、线上冒烟、终态清理）
+8. `13-project-cleanup-gate.md`
 
 > 上线前对抗式审查：如本次上线涉及用户输入、数据写入、权限、API、爬虫、定时任务或公网访问，在正向验收之外加一道「对抗式审查」（畸形 / 超大 / 时间错乱 / 并发等异常输入反向找 BUG）；纯静态部署或小改不用（详见 SKILL.md「两个通用思维」）。
 
@@ -279,6 +300,7 @@
 - 不允许擅自改生产数据。
 - 不允许没有回滚方式就做高风险变更。
 - 不允许部署方式变了但 README / PROJECT_STATE 不更新。
+- 不允许线上冒烟未通过就宣布部署完成。
 
 ---
 
@@ -294,7 +316,8 @@
 ## 路由
 
 1. `12-verification-git-report.md`
-2. 必要时 `13-project-cleanup-gate.md`
+2. 自动挡或有待收口分支时：`19-pipeline-loop.md`
+3. 必要时 `13-project-cleanup-gate.md`
 
 ## 禁止
 
@@ -310,6 +333,7 @@
 - 验收结果
 - commit 信息建议
 - push 状态或无法 push 的原因
+- PR / 合并 / 收口状态
 
 ---
 
@@ -342,6 +366,7 @@
 - 不为了形式强行创建一堆没人用的 docs。
 - 不自动删除、缩短、重命名或移动文件、段落和记忆。
 - 不默认修改用户级全局规则、Codex 机器记忆或其他项目。
+- 不处理运行垃圾（已合并分支、worktree、临时数据），那归 19 号终态清理。
 
 ## 预计产物
 

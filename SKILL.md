@@ -1,12 +1,12 @@
 ---
 name: kun-coding-router
-description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, hand off, save, or clean up / tidy (Chinese 洁癖 / 收尾 / 项目整理) a vibe coding project. Kun Coding Router is a project-manager-style router: it diagnoses task type and project phase, selects and orders the right references/sub-skills, enforces safety pauses at high-risk steps, and requires concrete outputs with acceptance steps. It keeps a Pre-Coding Gate, AI-SDD specs, Codex-safe construction, test-first and backend-acceptance gates, project setup/cleanup, handoff, and a Git save-confirmation guard. Layered context rules read PROJECT_STATE/HANDOFF by default and DECISIONS/CONTEXT/ACCEPTANCE only when a task triggers them. First-Principles and Adversarial Review prompts add root-cause and pre-launch rigor, triggered by scenario and never applied to small changes. A light routing mode keeps small changes cheap."
+description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, merge, hand off, save, or clean up / tidy (Chinese 洁癖 / 收尾 / 项目整理) a vibe coding project. Kun Coding Router identifies task type and phase, routes the needed references, pauses at high-risk steps, and requires verifiable outputs. It covers project setup, specs, safe construction, testing, backend acceptance, cleanup, handoff, and per-project pipeline modes. Manual mode keeps Git confirmations. Authorized auto mode uses a feature branch and worktree, then runs commit, push, PR, CI, merge, deploy, and online smoke checks when its pipeline contract is complete. Cleanup waits for user confirmation. PROJECT_STATE/HANDOFF are read by default. First-Principles and Adversarial Review add rigor when needed. Light routing keeps small-change planning and validation cheap; auto-mode delivery still uses the pipeline."
 metadata:
-  short-description: "Kun Coding Router V0.7.9：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、验收收尾；三层知识编辑让项目文档、规则和记忆可追溯。"
-  version: "0.7.9"
+  short-description: "Kun Coding Router V0.8.0：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、验收收尾；项目级流水线挡位——手动挡保留确认护栏，自动挡在流水线契约完整时连跑 push/PR/CI/合并/部署/线上冒烟，终态清理等确认后执行。"
+  version: "0.8.0"
 ---
 
-# Kun Coding Router V0.7.9：项目流程调度器
+# Kun Coding Router V0.8.0：项目流程调度器
 
 ## 一句话定位
 
@@ -84,7 +84,7 @@ metadata:
 
 ## 开工门禁（Pre-Coding Gate，V0.6.2 保留）
 
-`references/03-pre-coding-gate.md` 是正式写代码前的轻量门禁，只负责拦截和路由，不替代 Product Brief、AI-SDD、Git、设计门、架构门或项目洁癖。它会强制确认本轮分支策略（新功能/大改开 `feature/xxx`，小修/小 bug 走当前分支），未确认不进入施工。
+`references/03-pre-coding-gate.md` 是正式写代码前的轻量门禁，只负责拦截和路由，不替代 Product Brief、AI-SDD、Git、设计门、架构门或项目洁癖。它会强制确认本轮分支与工作区策略：手动挡新功能 / 大改开 feature，手动挡小修可走当前分支；自动挡任何施工都走 feature+worktree，小改只运行 03 第 6/7 项轻量门禁。未确认不进入施工。
 
 ### 必须触发
 
@@ -95,10 +95,11 @@ metadata:
 3. 已有项目新增大功能，且可能影响页面、数据、API、架构或目录。
 4. 项目中没有清楚的 `PROJECT_STATE.md`，或状态文件缺少 MVP、当前 Spec、Git 状态。
 5. 用户连续讨论 UI / 高保真设计，但核心功能和 MVP 尚未验证。
+6. 自动挡项目准备进行任何代码 / 文案 / 样式修改，但本轮 feature 分支、worktree 或流水线契约尚未核对；小改只触发 03 第 6/7 项，不运行完整门禁。
 
 ### 默认不触发
 
-小 bug、小样式调整、文案修改、已有明确 Task Spec 的单轮小任务、单文件小修。
+手动挡的小 bug、小样式调整、文案修改、已有明确 Task Spec 的单轮小任务、单文件小修默认不触发；自动挡同类小改触发第 6/7 项轻量门禁。
 
 ---
 
@@ -226,6 +227,38 @@ Router 不直接替代子 Skill。
 
 ---
 
+## 流水线挡位（V0.8.0）
+
+> 这是全 Skill 唯一一份挡位定义，各门引用本节，不重复展开。收口六步、CI 模板和降级路径见 `references/19-pipeline-loop.md`。
+
+每个项目在 `PROJECT_STATE.md` 里声明一个「流水线挡位」。开工门禁第一次进项目时问一次，之后整个项目沿用；没写挡位字段的项目一律按手动挡（老项目完全兼容）。自动挡还必须有完整「项目流水线契约」，缺字段或权限失效时立即降级为手动挡。
+
+### 手动挡（默认）
+
+现行行为：完成修改后只输出 Git 保存建议，commit / push / 合并 / 部署每一步都等用户确认。
+
+### 自动挡（授权后启用）
+
+用户在 PROJECT_STATE 声明自动挡并补全流水线契约，等于提前授权：所有施工（包括小修）统一走 feature 分支 + worktree；初验全绿后自动 commit，随后同步基准分支并重新完整验收；复验全绿后继续连跑 push → PR → CI → 合并基准分支 → 同步主工作区 → 部署 → 线上冒烟 → 汇报。正常情况只停一次——**汇报后等用户确认精确清理清单，才进入终态清理**。worktree 删除必须服从项目规则，禁止批量删除时交给用户手动执行。
+
+### 轻量路由与挡位的关系
+
+轻量路由管「做多少规格、思考、报告和验收」，流水线挡位管「改动怎样交付」。两者可以同时成立：
+
+- 手动挡小改：轻量路由 → 当前分支 → 最小验收 → 给 Git 保存建议。
+- 自动挡小改：轻量路由 → 只补跑 03 第 6/7 项轻量门禁 → feature+worktree → 最小验收 → 19 自动收口。
+
+自动挡小改仍跳过 Product Brief、AI-SDD、架构门、完整 Test First 和完整 E2E；但轻量路由、自降级或用户说「就改一行」只能降低施工前后的流程强度，不能自动改写项目级 Git 授权。若用户希望小改直走当前分支，必须先明确把项目切回手动挡。
+
+### 任何挡位都不变的底线
+
+1. 强制确认哨兵 7 条触发时必须暂停，自动挡不能穿越哨兵。
+2. 文件、目录、数据、记忆的删除永远列清单待拍板，一次只处理一个明确对象；禁止在合并命令中提前删除远程分支。
+3. 流水线契约缺失、工具或权限不可用时自动降级为手动挡，不允许猜测。
+4. CI 红灯、超时或线上冒烟失败时流水线立即停，禁止强行合并或宣布上线完成。
+
+---
+
 ## Router 输出格式
 
 ### 完整路由报告（默认，中高风险任务用）
@@ -272,7 +305,7 @@ Router 不直接替代子 Skill。
 
 - 任务类型是 UI 小改 / 文案 / 单行样式；
 - 不碰数据模型、API、权限、路由、部署、依赖；
-- 不触发任何哨兵或开工门禁条件。
+- 不触发强制确认哨兵；手动挡不触发开工门禁，自动挡只允许触发 03 第 6/7 项轻量门禁。
 
 ```md
 # 路由判断（轻量）
@@ -281,12 +314,14 @@ Router 不直接替代子 Skill。
 UI 小改 / 文案
 
 ## 本轮启用
-- 安全施工
-- 保存汇报（最小验收）
+- 手动挡：安全施工 + 保存汇报（最小验收）
+- 自动挡：03 第 6/7 项轻量门禁 + 安全施工 + 最小验收 + 19 流水线收口
 
 ## 验收方式
 -
 ```
+
+轻量指规格、思考、报告和验收强度；自动挡的 Git 交付策略不因此降级。
 
 一旦发现小改其实牵动结构 / 数据流 / API，立即升级回完整路由报告。
 
@@ -301,6 +336,8 @@ UI 小改 / 文案
 1. 重新评估任务，按用户给的更小边界降级；
 2. **重新输出一份降级后的路由报告**（通常是轻量模式），而不是固执地继续原计划；
 3. 如果降级会跳过某个安全步骤（如测试 / 验收），用一句话说明被跳过的风险，再继续。
+
+自动挡项目中，自降级只能跳过不必要的规格、设计 / 架构门、完整测试和长报告，不能跳过第 6/7 项轻量门禁或 19 收口。用户明确要求直走当前分支时，先确认是否把项目切回手动挡；不得擅自直推基准分支。
 
 唯一不可降级的是**强制确认哨兵**：哨兵触发时即使用户嫌重，也要先确认 1/2/3，但可以用最短话术。
 
@@ -318,10 +355,10 @@ UI 小改 / 文案
 | 已有项目大功能 | 第 2 节 | 先锁范围再拆 Task Spec，不重写项目 |
 | 普通 / 继续开发 | 第 3 节 | 只围绕本轮任务，不重做规格 |
 | Bug 修复 | 第 4 节 | 复现路径=第一条测试，不顺手重构 |
-| UI / 文案 / 样式小改 | 第 5 节 | 走轻量路由，跳过规格、开工门禁、架构门 |
+| UI / 文案 / 样式小改 | 第 5 节 | 走轻量路由，跳过规格、完整门禁和架构门；自动挡只补 03 第 6/7 项并按 19 收口 |
 | 验收 / 测试 / 跑通 | 第 6 节 | 能跑真实路径就跑，不只看代码 |
-| 部署 / 上线 | 第 7 节 | 先确认环境、分支、回滚，不暴露密钥 |
-| 保存 / Git | 第 8 节 | 先验收再提交，不假装 push |
+| 部署 / 上线 | 第 7 节 | 先确认环境、分支、回滚，不暴露密钥；合并与上线后按 19 走线上冒烟 |
+| 保存 / Git | 第 8 节 | 先验收再提交，不假装 push；自动挡按 19 流水线收口 |
 | 项目收尾 / 洁癖 | 第 9 节 | 三层清理；删除待拍板；不碰 Obsidian |
 | 后端骨架验收 | 第 10 节 | 不写业务，只验收骨架 |
 | Project Setup | 第 11 节 | 先建最小档案再施工 |
@@ -354,6 +391,7 @@ UI 小改 / 文案
 
 ✅ 正确：
    轻量路由 → UI 小改 → 只启用 安全施工 + 最小验收。
+   手动挡到此给保存建议；自动挡再走第 6/7 项轻量门禁和 19 收口。
 ```
 
 ### 例 2：后端未验收就写业务
@@ -391,6 +429,7 @@ UI 小改 / 文案
 
 ✅ 正确：
    触发自降级规则 → 重新输出轻量路由报告 → 一句话说明跳过测试的风险 → 改。
+   手动挡到此给保存建议；自动挡再走第 6/7 项轻量门禁和 19 收口。
 ```
 
 ---
@@ -401,9 +440,10 @@ UI 小改 / 文案
 - 先定位，再选择流程，再执行。
 - 小步推进，少量修改，可验收，可回滚。
 - 每轮完成后必须给「用户手动验收指引」：打开哪里 → 点什么 → 看到什么算成功 → 刷新查什么 → 旧功能回归查什么。不许只说「已完成 / build 通过 / 应该可以」。小改给一两步轻量版，功能 / 数据 / Bug / 部署给完整步骤（模板见 `references/12-verification-git-report.md`）。
-- Git commit / push 属于版本保存动作。除非用户明确要求或提前授权，完成修改后只输出 Git 保存建议，不得自动 commit / push。
+- Git commit / push 属于版本保存动作，按项目挡位执行：手动挡下完成修改后只输出 Git 保存建议，不得自动 commit / push；自动挡只有在 PROJECT_STATE 的流水线契约完整时生效，初验全绿后可自动 commit，但必须同步基准分支并复验全绿后才能 push，再按 19 号流水线继续收口（见「流水线挡位」）。
+- 凡在 feature 分支 / worktree 施工的任务，完成后必须走 19 号流水线收口（push → PR/合并 → 清理），不许留「有去无回」的分支。
 - Router 负责调度，不替代所有子 Skill。
-- 不要为了流程完整而制造负担；低风险小改用轻量路由。
+- 不要为了流程完整而制造负担；低风险小改始终使用轻量规格、最小验收和短报告。自动挡只额外保留第 6/7 项轻量门禁与 19 Git 收口，不恢复 Product Brief、AI-SDD、架构门或完整 E2E。
 - 用户嫌重时执行自降级规则，不要固执。
 - 哨兵触发时，再嫌重也要先确认。
 - 不要把个人知识库沉淀混入本 Skill；项目复盘和 Obsidian 归档应交给单独流程。

@@ -136,6 +136,10 @@ package.json / pyproject.toml / requirements.txt 等
 
 使用模板：默认用 `PROJECT_STATE.minimal.template.md`（最小版，适合新手和小项目）。当项目变大、需要记 MVP 边界 / 架构快照 / E2E 路径 / 文档同步表时，再升级到 `PROJECT_STATE.template.md`（完整版）。
 
+- 「流水线挡位」字段默认写手动挡；开工门禁第一次进项目时会问一次是否切自动挡（定义见 SKILL.md「流水线挡位」）。
+- 选择自动挡时必须补全「项目流水线契约」：基准分支、远程、工作区、PR、CI、部署 / 冒烟 / 回滚与 worktree 清理权限；缺字段保持手动挡。
+- 两个 PROJECT_STATE 模板都必须包含「当前流水线运行状态」：只在停止、跨窗口、等待清理确认和 DONE 等持久化节点写入；恢复前先用 Git / gh / CI / 部署平台核实真实状态。
+
 ---
 
 ### 推荐：CONTEXT.md

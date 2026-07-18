@@ -2,11 +2,11 @@
 name: kun-coding-router
 description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, hand off, save, or clean up / tidy (Chinese 洁癖 / 收尾 / 项目整理) a vibe coding project. Kun Coding Router is a project-manager-style router: it diagnoses task type and project phase, selects and orders the right references/sub-skills, enforces safety pauses at high-risk steps, and requires concrete outputs with acceptance steps. It keeps a Pre-Coding Gate, AI-SDD specs, Codex-safe construction, test-first and backend-acceptance gates, project setup/cleanup, handoff, and a Git save-confirmation guard. Layered context rules read PROJECT_STATE/HANDOFF by default and DECISIONS/CONTEXT/ACCEPTANCE only when a task triggers them. First-Principles and Adversarial Review prompts add root-cause and pre-launch rigor, triggered by scenario and never applied to small changes. A light routing mode keeps small changes cheap."
 metadata:
-  short-description: "Kun Coding Router V0.7.8：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、验收收尾；三层知识编辑让项目文档、规则和记忆可追溯。"
-  version: "0.7.8"
+  short-description: "Kun Coding Router V0.7.9：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、验收收尾；三层知识编辑让项目文档、规则和记忆可追溯。"
+  version: "0.7.9"
 ---
 
-# Kun Coding Router V0.7.8：项目流程调度器
+# Kun Coding Router V0.7.9：项目流程调度器
 
 ## 一句话定位
 

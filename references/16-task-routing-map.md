@@ -82,7 +82,7 @@
 8. `08-architecture-gate.md`
 9. `09-test-first-gate.md`
 10. `10-codex-safe-construction.md`
-11. 复杂交互时 `11-computer-use-e2e-gate.md`
+11. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 12. `12-verification-git-report.md`
 13. `19-pipeline-loop.md`（feature 分支收口）
 14. `13-project-cleanup-gate.md`
@@ -124,7 +124,7 @@
 4. `06-task-spec-template.md`
 5. 必要时 `09-test-first-gate.md`
 6. `10-codex-safe-construction.md`
-7. 复杂交互时 `11-computer-use-e2e-gate.md`
+7. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
 9. 必要时 `13-project-cleanup-gate.md`
 10. 必要时 `19-pipeline-loop.md`（本轮在 feature 分支 / worktree 施工时）
@@ -164,7 +164,7 @@
 4. `06-task-spec-template.md` 的 Bug 极简版
 5. `09-test-first-gate.md`
 6. `10-codex-safe-construction.md`
-7. 需要真实路径时 `11-computer-use-e2e-gate.md`
+7. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
 9. 高复用问题写入 `13-project-cleanup-gate.md` / TROUBLESHOOTING；若形成可复用回归路径，必要时同步到 `ACCEPTANCE.md`
 
@@ -203,13 +203,13 @@
 1. 读取相关文件
 2. `06-task-spec-template.md` 极简版
 3. `10-codex-safe-construction.md`
-4. `12-verification-git-report.md`（最小验收 → Git 保存建议）
+4. `12-verification-git-report.md`（最小验收 → 轻量完成报告 → Git 保存建议）
 
 ### 自动挡
 
-1. `03-pre-coding-gate.md` 第 6/7 项轻量门禁
+1. `03-pre-coding-gate.md`「自动挡双项轻量门禁」
 2. `10-codex-safe-construction.md`
-3. `12-verification-git-report.md`（最小验收）
+3. `12-verification-git-report.md`（最小验收 + 轻量完成报告）
 4. `19-pipeline-loop.md` 流水线收口
 
 ## 默认跳过
@@ -222,7 +222,7 @@
 - 项目洁癖
 - 完整开工门禁、完整 Test First、完整 E2E
 
-两种挡位都保持 3 块轻量报告；自动挡只补第 6/7 项轻量门禁和 19 收口，不恢复全套重流程。
+两种挡位都保持 3 块轻量路由报告，完成后必须输出 12 号的 6 项轻量完成报告，禁止套用完整模板；自动挡只补「自动挡双项轻量门禁」和 19 收口，不恢复全套重流程。只有风险升级、使用 V3、存在未验证项或流水线异常时才升级完整报告，并说明命中的条件。
 
 ## 禁止
 
@@ -256,7 +256,7 @@
 
 1. 如存在 `ACCEPTANCE.md`，优先读取（它就是本项目的验收说明书）
 2. `09-test-first-gate.md`
-3. 复杂交互时 `11-computer-use-e2e-gate.md`
+3. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 4. `12-verification-git-report.md`
 5. 验收通过且阶段完成时 `13-project-cleanup-gate.md`
 
@@ -287,8 +287,8 @@
 2. `06-task-spec-template.md`
 3. `08-architecture-gate.md`
 4. `10-codex-safe-construction.md`
-5. `11-computer-use-e2e-gate.md`
-6. `12-verification-git-report.md`
+5. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
+6. 使用 `12-verification-git-report.md` 汇报验收结果
 7. `19-pipeline-loop.md`（合并、线上冒烟、终态清理）
 8. `13-project-cleanup-gate.md`
 

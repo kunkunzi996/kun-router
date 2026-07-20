@@ -1,6 +1,6 @@
-# Kun Coding Router 流程图（V0.8.0）
+# Kun Coding Router 流程图（V0.8.2）
 
-> 这份 V0.8.0 文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
+> 这份 V0.8.2 文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
 > 看不懂文字版没关系，先看图，每张图下面都有大白话说明。
 
 ---
@@ -21,7 +21,7 @@ flowchart TD
 
     D -- 触发强制确认哨兵 --> E[⛔ 暂停<br/>弹三选一，用户不选不动]
     D -- 触发开工门禁 --> F[🚧 过开工门禁<br/>查目录/MVP/Git/分支与工作区/挡位]
-    D -- 自动挡低风险小改 --> AL[🚧 03 第 6/7 项轻量门禁<br/>只核对分支/worktree/契约]
+    D -- 自动挡低风险小改 --> AL[🚧 自动挡双项轻量门禁<br/>分支工作区检查 + 流水线准入检查]
     D -- 都没触发 --> G
 
     E -- 用户确认后 --> G
@@ -35,7 +35,13 @@ flowchart TD
     H1 --> I[按 16 表对应任务分流执行]
     H2 --> I
     I --> J[小步施工]
-    J --> K[✅ 完成后必给『用户手动验收指引』<br/>打开哪→点什么→看到什么算成功→刷新查什么]
+    J --> V{选择足够可靠的最低验证等级}
+    V -- V1 --> V1[终端自动化<br/>测试/build/API]
+    V -- V2 --> V2[浏览器自动化<br/>Playwright 或等价工具]
+    V -- V3且已授权 --> V3[Computer-Use<br/>桌面/跨应用最后手段]
+    V1 --> K[✅ 完成后必给验收指引 + 完成报告<br/>低风险用6行轻量版<br/>风险升级/未验证/异常用完整版]
+    V2 --> K
+    V3 --> K
     K --> P{feature 分支施工？}
     P -- 是 --> READY{手动挡<br/>或自动挡契约完整？}
     READY -- 否 --> MANUAL[降级手动挡并列出缺口]
@@ -85,23 +91,21 @@ flowchart LR
     R --> T11
     R --> T12
 
-    T1[1.新项目] --> T1x[想法测试→开工规格→<br/>Product Brief→AI-SDD→<br/>Project Setup→开工门禁→设计/架构门]
-    T2[2.大功能] --> T2x[读档→范围锁定→变更规格→<br/>Task Spec→开工门禁→架构门→<br/>测试门→安全施工→E2E→验收→流水线收口→洁癖→交接]
-    T3[3.普通/继续开发] --> T3x[读档→Task Spec→<br/>测试门→安全施工→验收→必要时流水线收口]
-    T4[4.Bug修复] --> T4x[读报错→复现路径=第一条测试→<br/>测试门→安全施工→验收]
-    T5[5.UI/文案小改] --> T5x[轻量规格 / 最小验收；<br/>自动挡另加 03 第 6/7 项 + 19 收口]
-    T6[6.验收/测试] --> T6x[测试门→E2E→验收报告→洁癖]
-    T7[7.部署上线] --> T7x[读档→架构门→安全施工→<br/>E2E→验收→流水线收口→洁癖]
-    T8[8.保存Git] --> T8x[手动挡等确认保存 /<br/>自动挡按 19 收口]
-    T9[9.项目收尾/洁癖] --> T9x[验收→三层知识编辑→<br/>删除/越界待拍板→必要时交接]
-    T10[10.后端骨架验收] --> T10x[架构门→后端验收官7步→<br/>验收报告。不写业务！]
-    T11[11.Project Setup] --> T11x[建最小档案<br/>PROJECT_STATE.minimal]
-    T12[12.Handoff交接] --> T12x[写HANDOFF.md：<br/>下一轮入口/必读/风险/禁区]
+    T1[1.新项目] --> T1x[唯一顺序见 16 第1节]
+    T2[2.大功能] --> T2x[唯一顺序见 16 第2节]
+    T3[3.普通/继续开发] --> T3x[唯一顺序见 16 第3节]
+    T4[4.Bug修复] --> T4x[唯一顺序见 16 第4节]
+    T5[5.UI/文案小改] --> T5x[唯一顺序见 16 第5节]
+    T6[6.验收/测试] --> T6x[唯一顺序见 16 第6节]
+    T7[7.部署上线] --> T7x[唯一顺序见 16 第7节]
+    T8[8.保存Git] --> T8x[唯一顺序见 16 第8节]
+    T9[9.项目收尾/洁癖] --> T9x[唯一顺序见 16 第9节]
+    T10[10.后端骨架验收] --> T10x[唯一顺序见 16 第10节]
+    T11[11.Project Setup] --> T11x[唯一顺序见 16 第11节]
+    T12[12.Handoff交接] --> T12x[唯一顺序见 16 第12节]
 ```
 
-**大白话**：
-- 同样是「写东西」，新项目要走一长串规划，改个按钮颜色只走 3 步——**这就是 Router 的价值：该重的重，该轻的轻**。
-- 越往下（小改、保存）越短，越往上（新项目、大功能）越完整。
+**大白话**：图里只负责把任务指到 16 对应章节，不再复制具体步骤；这样路线调整时只改 16 一处。
 
 ---
 
@@ -121,10 +125,10 @@ flowchart TD
     GATEOK -- 缺啥补啥 --> ROUTE[按缺口路由到对应文件]
     GATEOK -- 通过 --> Q3
     Q2 -- 手动挡小bug/小文案/单文件小修 --> Q3
-    Q2 -- 自动挡低风险小改 --> LIGHT[🚧 只过第 6/7 项<br/>分支/worktree/契约]
+    Q2 -- 自动挡低风险小改 --> LIGHT[🚧 自动挡双项轻量门禁<br/>分支工作区检查 + 流水线准入检查]
     LIGHT --> Q3
 
-    Q3[施工 → 完成] --> ACC[✅ 验收收口<br/>必给『你可以这样验收』<br/>前端给点击路径/Bug给复现+验证/<br/>API给请求示例/部署给公网地址<br/>跑不动要标『未实际验证』]
+    Q3[施工 → 完成] --> ACC[✅ 分级验收收口<br/>V1终端→V2浏览器→V3桌面<br/>使用足够可靠的最低等级<br/>跑不动要标『未实际验证』]
     ACC --> DONE[结束 / 交接 / 保存]
     ACC -. 上线前/复杂功能·可选 .-> ADV[🛡️ 对抗式审查<br/>站在恶意用户角度<br/>畸形/超大/时间错乱/并发等异常输入反向找BUG]
     ADV --> DONE
@@ -132,11 +136,13 @@ flowchart TD
 
 **大白话**：
 - **第一道·哨兵**：最硬，碰到 7 种高风险情况直接暂停问你，哪怕你嫌烦也得先确认（唯一不能跳过的）。
-- **第二道·开工门禁**：正式写代码前的「体检」，完整门禁 7 项缺哪补哪；手动挡小修小补免检，自动挡小改只补第 6/7 项。
+- **第二道·开工门禁**：正式写代码前的「体检」，完整门禁 7 项缺哪补哪；手动挡小修小补免检，自动挡小改只过「自动挡双项轻量门禁」。
 - **第三道·验收收口**：干完活必须告诉你怎么亲自验，不准只说「已完成」。
+- **验证阶梯**：默认从 V1 终端自动化开始；网页交互证据才升 V2；V3 Computer-Use 只在前两级不够且本轮已授权时运行，一个完整功能最多跑一次。
+- **报告分级**：低风险且全绿时用 6 行轻量完成报告；V3、未验证、部署、高风险变化或流水线异常时使用完整报告。
 - **上线前·对抗式审查（V0.7.7，可选增强，不是第四道硬门）**：正向验收之外，让 AI 站在恶意用户角度用畸形/超大/时间错乱数据反向找 BUG；复杂功能可用当前工具支持的多 Agent 审查。另外修 Bug、想重构时，先加一句「从第一性原理出发」，逼 AI 找治本解而不是糊补丁。
 - **阶段收尾·三层知识编辑（V0.7.8）**：在已验收后核对项目文档、项目规则和明确归属的项目记忆；删除、全局规则、跨项目和 Codex 机器记忆不自动处理，统一先列待你拍板。
-- **挡位与轻量路由**：轻量路由降低规格与验收强度；自动挡小改只补门禁第 6/7 项，Git 交付仍走 19。定义见 SKILL.md「流水线挡位」。
+- **挡位与轻量路由**：轻量路由降低规格与验收强度；自动挡小改只过「自动挡双项轻量门禁」，Git 交付仍走 19。定义见 SKILL.md「流水线挡位」。
 
 ---
 
@@ -148,27 +154,8 @@ flowchart TD
 
 ---
 
-## 文件速查（这些步骤分别在哪个文件）
+## 文件入口
 
-| 环节 | 对应文件 |
-|---|---|
-| 总调度 / 判断 | `SKILL.md` |
-| 文件清单 | `references/00-skill-index.md` |
-| 想法压力测试 | `references/01-idea-pressure-test.md` |
-| 开工规格 | `references/02-spec-start-qiaomu-inspired.md` |
-| **开工门禁（关卡 2）** | `references/03-pre-coding-gate.md` |
-| Product Brief / MVP | `references/04-product-brief-mvp.md` |
-| AI-SDD 规格 | `references/05-ai-sdd-template.md` |
-| Task Spec | `references/06-task-spec-template.md` |
-| 设计门 / 架构门 | `references/07-design-gate.md` / `08-architecture-gate.md` |
-| 测试门 | `references/09-test-first-gate.md` |
-| 安全施工 | `references/10-codex-safe-construction.md` |
-| Computer-Use E2E | `references/11-computer-use-e2e-gate.md` |
-| **验收 / Git / 完成报告（关卡 3）** | `references/12-verification-git-report.md` |
-| 项目洁癖 | `references/13-project-cleanup-gate.md`（主流程）；按需读取 `13-project-cleanup-platforms.md`、`13-project-cleanup-matrix.md` |
-| 后端验收官 | `references/14-backend-architecture-acceptance.md` |
-| Skill 调用分层 | `references/15-skill-invocation-layer.md` |
-| **任务路由表（图 2 来源）** | `references/16-task-routing-map.md` |
-| Project Setup | `references/17-project-setup.md` |
-| Handoff 协议 | `references/18-handoff-protocol.md` |
-| 流水线收口 | `references/19-pipeline-loop.md` |
+- 总规则与唯一输出格式：`SKILL.md`
+- reference 文件清单：`references/00-skill-index.md`
+- 12 类任务的唯一调用顺序：`references/16-task-routing-map.md`

@@ -180,4 +180,4 @@ export type Item = {
 - 影响 API / 模块边界。
 - 回归验收清单。
 - 是否需要架构门。
-- 是否需要 Computer-Use E2E。
+- 计划使用的最高验证等级：V1 终端自动化 / V2 浏览器自动化 / V3 Computer-Use；选择 V3 时写明原因和授权方式。

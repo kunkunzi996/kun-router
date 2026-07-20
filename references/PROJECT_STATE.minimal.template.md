@@ -1,5 +1,5 @@
 <!--
-生成于：Kun Coding Router v0.8.0
+生成于：Kun Coding Router v0.8.2
 生成日期：YYYY-MM-DD
 模板类型：PROJECT_STATE 最小版（新手 / 小项目默认用这个）
 需要更细的字段时，升级到 PROJECT_STATE.template.md（完整版）

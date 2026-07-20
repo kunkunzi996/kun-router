@@ -203,13 +203,13 @@
 1. 读取相关文件
 2. `06-task-spec-template.md` 极简版
 3. `10-codex-safe-construction.md`
-4. `12-verification-git-report.md`（最小验收 → Git 保存建议）
+4. `12-verification-git-report.md`（最小验收 → 轻量完成报告 → Git 保存建议）
 
 ### 自动挡
 
 1. `03-pre-coding-gate.md`「自动挡双项轻量门禁」
 2. `10-codex-safe-construction.md`
-3. `12-verification-git-report.md`（最小验收）
+3. `12-verification-git-report.md`（最小验收 + 轻量完成报告）
 4. `19-pipeline-loop.md` 流水线收口
 
 ## 默认跳过
@@ -222,7 +222,7 @@
 - 项目洁癖
 - 完整开工门禁、完整 Test First、完整 E2E
 
-两种挡位都保持 3 块轻量报告；自动挡只补「自动挡双项轻量门禁」和 19 收口，不恢复全套重流程。
+两种挡位都保持 3 块轻量路由报告，完成后必须输出 12 号的 6 项轻量完成报告，禁止套用完整模板；自动挡只补「自动挡双项轻量门禁」和 19 收口，不恢复全套重流程。只有风险升级、使用 V3、存在未验证项或流水线异常时才升级完整报告，并说明命中的条件。
 
 ## 禁止
 

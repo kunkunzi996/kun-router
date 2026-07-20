@@ -85,23 +85,21 @@ flowchart LR
     R --> T11
     R --> T12
 
-    T1[1.新项目] --> T1x[想法测试→开工规格→<br/>Product Brief→AI-SDD→<br/>Project Setup→开工门禁→设计/架构门]
-    T2[2.大功能] --> T2x[读档→范围锁定→变更规格→<br/>Task Spec→开工门禁→架构门→<br/>测试门→安全施工→E2E→验收→流水线收口→洁癖→交接]
-    T3[3.普通/继续开发] --> T3x[读档→Task Spec→<br/>测试门→安全施工→验收→必要时流水线收口]
-    T4[4.Bug修复] --> T4x[读报错→复现路径=第一条测试→<br/>测试门→安全施工→验收]
-    T5[5.UI/文案小改] --> T5x[轻量规格 / 最小验收；<br/>自动挡另加 03 第 6/7 项 + 19 收口]
-    T6[6.验收/测试] --> T6x[测试门→E2E→验收报告→洁癖]
-    T7[7.部署上线] --> T7x[读档→架构门→安全施工→<br/>E2E→验收→流水线收口→洁癖]
-    T8[8.保存Git] --> T8x[手动挡等确认保存 /<br/>自动挡按 19 收口]
-    T9[9.项目收尾/洁癖] --> T9x[验收→三层知识编辑→<br/>删除/越界待拍板→必要时交接]
-    T10[10.后端骨架验收] --> T10x[架构门→后端验收官7步→<br/>验收报告。不写业务！]
-    T11[11.Project Setup] --> T11x[建最小档案<br/>PROJECT_STATE.minimal]
-    T12[12.Handoff交接] --> T12x[写HANDOFF.md：<br/>下一轮入口/必读/风险/禁区]
+    T1[1.新项目] --> T1x[唯一顺序见 16 第1节]
+    T2[2.大功能] --> T2x[唯一顺序见 16 第2节]
+    T3[3.普通/继续开发] --> T3x[唯一顺序见 16 第3节]
+    T4[4.Bug修复] --> T4x[唯一顺序见 16 第4节]
+    T5[5.UI/文案小改] --> T5x[唯一顺序见 16 第5节]
+    T6[6.验收/测试] --> T6x[唯一顺序见 16 第6节]
+    T7[7.部署上线] --> T7x[唯一顺序见 16 第7节]
+    T8[8.保存Git] --> T8x[唯一顺序见 16 第8节]
+    T9[9.项目收尾/洁癖] --> T9x[唯一顺序见 16 第9节]
+    T10[10.后端骨架验收] --> T10x[唯一顺序见 16 第10节]
+    T11[11.Project Setup] --> T11x[唯一顺序见 16 第11节]
+    T12[12.Handoff交接] --> T12x[唯一顺序见 16 第12节]
 ```
 
-**大白话**：
-- 同样是「写东西」，新项目要走一长串规划，改个按钮颜色只走 3 步——**这就是 Router 的价值：该重的重，该轻的轻**。
-- 越往下（小改、保存）越短，越往上（新项目、大功能）越完整。
+**大白话**：图里只负责把任务指到 16 对应章节，不再复制具体步骤；这样路线调整时只改 16 一处。
 
 ---
 
@@ -148,27 +146,8 @@ flowchart TD
 
 ---
 
-## 文件速查（这些步骤分别在哪个文件）
+## 文件入口
 
-| 环节 | 对应文件 |
-|---|---|
-| 总调度 / 判断 | `SKILL.md` |
-| 文件清单 | `references/00-skill-index.md` |
-| 想法压力测试 | `references/01-idea-pressure-test.md` |
-| 开工规格 | `references/02-spec-start-qiaomu-inspired.md` |
-| **开工门禁（关卡 2）** | `references/03-pre-coding-gate.md` |
-| Product Brief / MVP | `references/04-product-brief-mvp.md` |
-| AI-SDD 规格 | `references/05-ai-sdd-template.md` |
-| Task Spec | `references/06-task-spec-template.md` |
-| 设计门 / 架构门 | `references/07-design-gate.md` / `08-architecture-gate.md` |
-| 测试门 | `references/09-test-first-gate.md` |
-| 安全施工 | `references/10-codex-safe-construction.md` |
-| Computer-Use E2E | `references/11-computer-use-e2e-gate.md` |
-| **验收 / Git / 完成报告（关卡 3）** | `references/12-verification-git-report.md` |
-| 项目洁癖 | `references/13-project-cleanup-gate.md`（主流程）；按需读取 `13-project-cleanup-platforms.md`、`13-project-cleanup-matrix.md` |
-| 后端验收官 | `references/14-backend-architecture-acceptance.md` |
-| Skill 调用分层 | `references/15-skill-invocation-layer.md` |
-| **任务路由表（图 2 来源）** | `references/16-task-routing-map.md` |
-| Project Setup | `references/17-project-setup.md` |
-| Handoff 协议 | `references/18-handoff-protocol.md` |
-| 流水线收口 | `references/19-pipeline-loop.md` |
+- 总规则与唯一输出格式：`SKILL.md`
+- reference 文件清单：`references/00-skill-index.md`
+- 12 类任务的唯一调用顺序：`references/16-task-routing-map.md`

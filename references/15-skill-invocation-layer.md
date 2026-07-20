@@ -77,25 +77,7 @@ Acceptance 负责验收。
 
 它们负责具体执行纪律。
 
-### 包含
-
-| 名称 | 文件 | 作用 |
-|---|---|---|
-| Idea Pressure Test | 01-idea-pressure-test.md | 判断想法是否值得做 |
-| Spec Start | 02-spec-start-qiaomu-inspired.md | 生成开工规格草案 |
-| Product Brief / MVP | 04-product-brief-mvp.md | 锁定产品目标和 MVP 边界 |
-| AI-SDD | 05-ai-sdd-template.md | 生成 AI 可执行规格 |
-| Task Spec | 06-task-spec-template.md | 单轮任务规格 |
-| Design Gate | 07-design-gate.md | 页面布局、视觉、交互基调 |
-| Architecture Gate | 08-architecture-gate.md | 开工前架构蓝图 |
-| Test First Gate | 09-test-first-gate.md | 写代码前定义验收 / 测试 |
-| Codex Safe Construction | 10-codex-safe-construction.md | 小步修改、少动文件、可回滚 |
-| Computer-Use E2E | 11-computer-use-e2e-gate.md | 真实用户路径验收 |
-| Verification / Git / Report | 12-verification-git-report.md | 验收、Git、完成报告 |
-| Project Cleanup Gate | 13-project-cleanup-gate.md | 已验收后按项目文档、项目规则、项目级记忆三层核对与收口 |
-| Backend Acceptance | 14-backend-architecture-acceptance.md | 后端骨架写业务前验收 |
-| Project Setup | 17-project-setup.md | 项目第一次接入建档 |
-| Handoff Protocol | 18-handoff-protocol.md | 跨窗口交接 |
+调度型 reference 的完整清单、文件名和职责只在 `00-skill-index.md` 维护，本文件不复制该清单。
 
 ---
 
@@ -131,34 +113,7 @@ Router 不应该：
 
 ## E. Router 应该输出什么
 
-每次路由时，Router 必须输出：
-
-```md
-## 当前判断
-任务类型：
-项目阶段：
-风险等级：
-
-## 本轮启用
--
-
-## 本轮跳过
--
-
-## 调用顺序
-1.
-2.
-3.
-
-## 本轮禁止事项
--
-
-## 预计产物
--
-
-## 验收方式
--
-```
+每次路由时，严格使用 `SKILL.md`「Router 输出格式」中的完整或轻量模板。本文件不维护第二套输出字段。
 
 ---
 

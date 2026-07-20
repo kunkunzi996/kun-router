@@ -114,13 +114,7 @@ project-root/
 git status
 ```
 
-如果不是 Git 仓库，提醒用户先初始化：
-
-```bash
-git init
-git add .
-git commit -m "init project baseline"
-```
+如果不是 Git 仓库，提醒用户先按 `12-verification-git-report.md` 的「开工前 Git 基线」建立初始存档：先列出并确认要纳入的具体文件或目录，再精确暂存；禁止使用 `git add .`。
 
 对新手解释：
 

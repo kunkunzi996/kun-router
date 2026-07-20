@@ -84,9 +84,13 @@ git status
 
 ```bash
 git init
-git add .
+git status --short
+git add -- <已确认的文件或目录>
+git diff --cached --name-only
 git commit -m "init project baseline"
 ```
+
+`<已确认的文件或目录>` 是占位符，必须先替换为实际路径，不能原样执行。不要使用 `git add .` 或不带路径的 `git add -A`；范围不清时先列出候选文件让用户确认。
 
 对新手解释：
 
@@ -110,6 +114,12 @@ git commit -m "init project baseline"
 
 先读 `PROJECT_STATE.md` 的「流水线挡位」；没写挡位 = 手动挡。
 
+### 精确暂存（所有挡位）
+
+每次暂存前先运行 `git status --short`，对照本轮任务文件清单；只允许使用 `git add -- <明确路径>` 暂存已确认的文件或目录。随后运行 `git diff --cached --name-only` 核对暂存范围。
+
+禁止使用 `git add .` 或不带路径的 `git add -A`，避免把密钥、生成文件或用户未跟踪文件一起提交；范围不清时停止暂存，先让用户确认清单。
+
 ### 手动挡（默认）
 
 完成修改或验收后，默认不要直接执行 `git add` / `git commit` / `git push`。
@@ -129,7 +139,8 @@ git commit -m "init project baseline"
 
 ```bash
 git status
-git add .
+git add -- <本轮明确修改的路径>
+git diff --cached --name-only
 git commit -m "简洁说明本次改动"
 git push
 ```

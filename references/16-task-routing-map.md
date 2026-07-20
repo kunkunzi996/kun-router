@@ -82,7 +82,7 @@
 8. `08-architecture-gate.md`
 9. `09-test-first-gate.md`
 10. `10-codex-safe-construction.md`
-11. 复杂交互时 `11-computer-use-e2e-gate.md`
+11. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 12. `12-verification-git-report.md`
 13. `19-pipeline-loop.md`（feature 分支收口）
 14. `13-project-cleanup-gate.md`
@@ -124,7 +124,7 @@
 4. `06-task-spec-template.md`
 5. 必要时 `09-test-first-gate.md`
 6. `10-codex-safe-construction.md`
-7. 复杂交互时 `11-computer-use-e2e-gate.md`
+7. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
 9. 必要时 `13-project-cleanup-gate.md`
 10. 必要时 `19-pipeline-loop.md`（本轮在 feature 分支 / worktree 施工时）
@@ -164,7 +164,7 @@
 4. `06-task-spec-template.md` 的 Bug 极简版
 5. `09-test-first-gate.md`
 6. `10-codex-safe-construction.md`
-7. 需要真实路径时 `11-computer-use-e2e-gate.md`
+7. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
 9. 高复用问题写入 `13-project-cleanup-gate.md` / TROUBLESHOOTING；若形成可复用回归路径，必要时同步到 `ACCEPTANCE.md`
 
@@ -256,7 +256,7 @@
 
 1. 如存在 `ACCEPTANCE.md`，优先读取（它就是本项目的验收说明书）
 2. `09-test-first-gate.md`
-3. 复杂交互时 `11-computer-use-e2e-gate.md`
+3. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 4. `12-verification-git-report.md`
 5. 验收通过且阶段完成时 `13-project-cleanup-gate.md`
 
@@ -287,8 +287,8 @@
 2. `06-task-spec-template.md`
 3. `08-architecture-gate.md`
 4. `10-codex-safe-construction.md`
-5. `11-computer-use-e2e-gate.md`
-6. `12-verification-git-report.md`
+5. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
+6. 使用 `12-verification-git-report.md` 汇报验收结果
 7. `19-pipeline-loop.md`（合并、线上冒烟、终态清理）
 8. `13-project-cleanup-gate.md`
 

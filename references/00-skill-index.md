@@ -34,8 +34,8 @@ V0.7.1 新增"分组"列：把 references 按职责归为四组（Flows 流程 /
 | Gates | 架构门 | `08-architecture-gate.md` | 判断架构、数据、API、目录风险 | 大功能 / 数据库 / API / 部署 |
 | Gates | 测试门 | `09-test-first-gate.md` | 写代码前先定义通过/失败标准 | Bug / 表单 / 数据 / 计算 |
 | Gates | 安全施工 | `10-codex-safe-construction.md` | 控制 Codex 小步、少改、可回滚 | 所有改代码任务 |
-| Gates | 真实用户验收 | `11-computer-use-e2e-gate.md` | 鼠标键盘/浏览器/桌面端到端验证 | 多页面 / 复杂交互 / 部署后验证 |
-| Gates | 保存汇报 | `12-verification-git-report.md` | 验收、Git、完成报告 | 做完了 / 保存一下 / 提交 |
+| Gates | 桌面验证 | `11-computer-use-e2e-gate.md` | V3 高成本桌面端到端验证 | 原生桌面 / 跨应用 / 明确授权 |
+| Gates | 保存汇报 | `12-verification-git-report.md` | V1-V3 分级验收、Git、完成报告 | 做完了 / 保存一下 / 提交 |
 | Gates | 项目洁癖 | `13-project-cleanup-gate.md` | 阶段收尾时按“项目文档、项目规则、项目级记忆”三层核对事实、规则和下一轮入口 | 收尾 / 同步文档 / 项目状态 / 新开对话前 |
 | Gates | 后端验收官 | `14-backend-architecture-acceptance.md` | 后端骨架搭建完成后验收是否能进入业务开发 | 后端骨架搭完 / 后端越写越乱 / 准备写业务 |
 | Gates | 流水线收口 | `19-pipeline-loop.md` | 验收后收口：push、PR、CI、合并、线上冒烟、确认后终态清理；挡位感知 | 合并 / 发 PR / 收口 / 清理分支 / 上线后检查 |

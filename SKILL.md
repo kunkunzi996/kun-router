@@ -2,11 +2,11 @@
 name: kun-coding-router
 description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, merge, hand off, save, or clean up / tidy (Chinese 洁癖 / 收尾 / 项目整理) a vibe coding project. Kun Coding Router identifies task type and phase, routes the needed references, pauses at high-risk steps, and requires verifiable outputs. It covers project setup, specs, safe construction, testing, backend acceptance, cleanup, handoff, and per-project pipeline modes. Manual mode keeps Git confirmations. Authorized auto mode uses a feature branch and worktree, then runs commit, push, PR, CI, merge, deploy, and online smoke checks when its pipeline contract is complete. Cleanup waits for user confirmation. PROJECT_STATE/HANDOFF are read by default. First-Principles and Adversarial Review add rigor when needed. Light routing keeps small-change planning and validation cheap; auto-mode delivery still uses the pipeline."
 metadata:
-  short-description: "Kun Coding Router V0.8.1：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、分级验收与轻量报告；项目级流水线挡位——手动挡保留确认护栏，自动挡在流水线契约完整时连跑 push/PR/CI/合并/部署/线上冒烟，终态清理等确认后执行。"
-  version: "0.8.1"
+  short-description: "Kun Coding Router V0.8.2：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、精确暂存、分级验收与轻量报告；项目级流水线挡位——手动挡保留确认护栏，自动挡在流水线契约完整时连跑 push/PR/CI/合并/部署/线上冒烟，终态清理等确认后执行。"
+  version: "0.8.2"
 ---
 
-# Kun Coding Router V0.8.1：项目流程调度器
+# Kun Coding Router V0.8.2：项目流程调度器
 
 ## 一句话定位
 
@@ -177,7 +177,9 @@ Router 不直接替代子 Skill。
 3. 我已经处理过了，请按已有记录继续
 ```
 
-### 后端验收专用话术（触发条件 1 时优先用这套，更适合新手）
+### 后端验收专用话术（触发条件 1 时必须使用）
+
+命中触发条件 1 时，必须直接使用下面的话术或保留相同 1 / 2 / 3 选项的简短版；不得用“先建分支 / 先规划”之类的泛化建议替代用户确认。
 
 ```md
 暂停一下，我需要先和你确认一件事

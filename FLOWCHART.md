@@ -1,6 +1,6 @@
-# Kun Coding Router 流程图（V0.8.0）
+# Kun Coding Router 流程图（V0.8.1）
 
-> 这份 V0.8.0 文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
+> 这份 V0.8.1 文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
 > 看不懂文字版没关系，先看图，每张图下面都有大白话说明。
 
 ---

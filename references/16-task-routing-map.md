@@ -207,7 +207,7 @@
 
 ### 自动挡
 
-1. `03-pre-coding-gate.md` 第 6/7 项轻量门禁
+1. `03-pre-coding-gate.md`「自动挡双项轻量门禁」
 2. `10-codex-safe-construction.md`
 3. `12-verification-git-report.md`（最小验收）
 4. `19-pipeline-loop.md` 流水线收口
@@ -222,7 +222,7 @@
 - 项目洁癖
 - 完整开工门禁、完整 Test First、完整 E2E
 
-两种挡位都保持 3 块轻量报告；自动挡只补第 6/7 项轻量门禁和 19 收口，不恢复全套重流程。
+两种挡位都保持 3 块轻量报告；自动挡只补「自动挡双项轻量门禁」和 19 收口，不恢复全套重流程。
 
 ## 禁止
 

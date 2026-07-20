@@ -43,8 +43,10 @@ V0.7.1 新增"分组"列：把 references 按职责归为四组（Flows 流程 /
 | Meta | 任务路由表 | `16-task-routing-map.md` | 明确不同任务类型应该启用哪些流程、禁止什么、产物是什么 | Router 判断任务类型时 |
 | Setup | Project Setup | `17-project-setup.md` | 项目第一次接入 Router 时建立 PROJECT_STATE、CONTEXT、ACCEPTANCE 等档案 | 新项目 / 旧项目首次接入 / 先分类文件夹 |
 | Setup | Handoff 协议 | `18-handoff-protocol.md` | 跨窗口 / 跨会话接续，生成 HANDOFF.md | 下次继续 / 新窗口继续 / 先到这里 |
-| 模板 | 项目状态模板 | `PROJECT_STATE.minimal / .template.md` | 项目户口本，分最小版与完整版 | Project Setup 时建档 |
-| 模板 | 交接模板 | `HANDOFF.minimal / .template.md` | 下班纸条，分最小版与完整版 | 跨窗口交接时生成 |
+| 模板 | 项目状态最小模板 | `PROJECT_STATE.minimal.template.md` | 新手和小项目默认使用的项目户口本 | Project Setup 时建档 |
+| 模板 | 项目状态完整模板 | `PROJECT_STATE.template.md` | 大项目需要更多状态字段时使用 | Project Setup 升级档案时 |
+| 模板 | 交接最小模板 | `HANDOFF.minimal.template.md` | 普通跨窗口接续使用的下班纸条 | 跨窗口交接时生成 |
+| 模板 | 交接完整模板 | `HANDOFF.template.md` | 复杂任务需要更多上下文时使用 | 复杂跨窗口交接时生成 |
 
 ---
 

@@ -1,12 +1,12 @@
 ---
 name: kun-coding-router
-description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, merge, hand off, save, or clean up / tidy (Chinese 洁癖 / 收尾 / 项目整理) a vibe coding project. Kun Coding Router identifies task type and phase, routes the needed references, pauses at high-risk steps, and requires verifiable outputs. It covers project setup, specs, safe construction, testing, backend acceptance, cleanup, handoff, and per-project pipeline modes. Manual mode keeps Git confirmations. Authorized auto mode uses a feature branch and worktree, then runs commit, push, PR, CI, merge, deploy, and online smoke checks when its pipeline contract is complete. Cleanup waits for user confirmation. PROJECT_STATE/HANDOFF are read by default. First-Principles and Adversarial Review add rigor when needed. Light routing keeps small-change planning and validation cheap; auto-mode delivery still uses the pipeline."
+description: "Use when the user wants to start, plan, build, continue, modify, debug, test, deploy, merge, hand off, or save a vibe coding project. Kun Coding Router identifies task type and phase, routes the needed references, pauses at high-risk steps, and requires verifiable outputs. It covers project setup, specs, safe construction, testing, backend acceptance, handoff, and per-project pipeline modes. Manual mode keeps Git confirmations. Authorized auto mode uses a feature branch and worktree, then runs commit, push, PR, CI, merge, deploy, and online smoke checks when its pipeline contract is complete. Final pipeline cleanup of branches and worktrees waits for user confirmation. PROJECT_STATE/HANDOFF are read by default. First-Principles and Adversarial Review add rigor when needed. Light routing keeps small-change planning and validation cheap; auto-mode delivery still uses the pipeline."
 metadata:
-  short-description: "Kun Coding Router V0.8.2：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、精确暂存、分级验收与轻量报告；项目级流水线挡位——手动挡保留确认护栏，自动挡在流水线契约完整时连跑 push/PR/CI/合并/部署/线上冒烟，终态清理等确认后执行。"
-  version: "0.8.2"
+  short-description: "Kun Coding Router V0.9.0：项目流程调度器。判断阶段、路由子 Skill、分层读档、强制确认、精确暂存、分级验收与轻量报告；项目级流水线挡位——手动挡保留确认护栏，自动挡在流水线契约完整时连跑 push/PR/CI/合并/部署/线上冒烟，终态清理等确认后执行。"
+  version: "0.9.0"
 ---
 
-# Kun Coding Router V0.8.2：项目流程调度器
+# Kun Coding Router V0.9.0：项目流程调度器
 
 ## 一句话定位
 
@@ -435,7 +435,6 @@ UI 小改 / 文案
 - 用户嫌重时执行自降级规则，不要固执。
 - 哨兵触发时，再嫌重也要先确认。
 - 不要把个人知识库沉淀混入本 Skill；项目复盘和 Obsidian 归档应交给单独流程。
-- 项目洁癖只在阶段完成、功能完成、部署完成、准备新开对话或用户明确要求时启用；按项目文档、项目规则、项目级记忆三层处理，不要让每个小改都变成文档工程。
-- 项目洁癖默认只处理当前项目；删除、重命名、移动、全局规则修改和跨项目写入必须列入待用户拍板，Codex 机器记忆只检查和报告。
+- 项目洁癖（三层知识编辑）已独立为 `kun-cleanup-gate` Skill：只在阶段完成、功能完成、部署完成、准备新开对话或用户明确要求时启用，由该 Skill 承担全部执行细则与删除红线；Router 只负责判断时机并移交，不在本文件展开三层处理流程。用户直接喊"洁癖 / 收尾"时，本 Skill 不必介入。
 - Handoff 是跨窗口接力，不是长篇复盘；只写下一轮必须知道的内容。
 - 复杂问题、找根因、架构决策、AI 想重构时，用「第一性原理」逼出本质解，别让 AI 用类比推理糊一个治标方案；功能上线前或定期复盘时，用「对抗式审查」找恶意 / 边界 BUG。两者都是按需触发的轻量思维，绝不对小改滥用（见「两个通用思维」）。

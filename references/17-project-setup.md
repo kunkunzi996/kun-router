@@ -312,10 +312,10 @@ package.json / pyproject.toml / requirements.txt 等
 
 ### 4. 写档时机：即时 vs 收尾（重要）
 
-为避免和「项目洁癖门」（`13-project-cleanup-gate.md`）冲突，分两类处理：
+为避免和「项目洁癖门」（`kun-cleanup-gate` Skill）冲突，分两类处理：
 
 - **重大且稳定的信息可即时写**：例如本轮定下技术栈、确立核心验收路径、做出会影响后续多个任务的关键取舍——直接写进 `DECISIONS.md` / `ACCEPTANCE.md` / `CONTEXT.md`，避免下一轮 AI 踩坑。
-- **零散文档同步仍归洁癖门**：术语补全、目录责任微调、非关键说明等，统一在阶段完成时由 `13-project-cleanup-gate.md` 收尾处理，不要让每个小改都变成文档工程。
+- **零散文档同步仍归洁癖门**：术语补全、目录责任微调、非关键说明等，统一在阶段完成时由 `kun-cleanup-gate` Skill 收尾处理，不要让每个小改都变成文档工程。
 
 ---
 

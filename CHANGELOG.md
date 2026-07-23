@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## V0.9.0
+
+本版将项目洁癖门拆为独立 `kun-cleanup-gate` Skill，让用户直接调用时不再经 Router 路由。
+
+### 新增
+
+- `cleanup-gate/`：新增独立 Skill 本体、README 与两个按需内部细则；主流程保留已验收自查，避免已提交且工作区干净时误判“本轮无改动”。
+
+### 调整
+
+- `SKILL.md`、`references/16-task-routing-map.md`：Router 保留完整流程中的移交入口，但不再以洁癖 / 收尾词触发独立 Skill 的高频直达场景。
+- Router 与 `kun-cleanup-gate` 的 description 明确划分知识三层收口和分支、worktree、临时数据等运行垃圾的边界。
+
+### 兼容性
+
+- `references/13-project-cleanup-gate.md`、`13-project-cleanup-platforms.md`、`13-project-cleanup-matrix.md` 原样保留作回退参考，确认稳定后由用户手动逐个移除。
+
 ## V0.8.2
 
 本版修复 V0.8.1 评审发现的执行歧义与安全不一致：哨兵只拦真正会使用未验收后端的业务，所有 Git 暂存改为精确路径，轻量 UI 路由不再在 SKILL 与 16 之间重复，自动挡同步后按代码树决定是否需要重跑完整验收。

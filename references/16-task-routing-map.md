@@ -85,7 +85,7 @@
 11. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 12. `12-verification-git-report.md`
 13. `19-pipeline-loop.md`（feature 分支收口）
-14. `13-project-cleanup-gate.md`
+14. `kun-cleanup-gate` Skill
 15. 准备新窗口时 `18-handoff-protocol.md`
 
 ## 禁止
@@ -126,7 +126,7 @@
 6. `10-codex-safe-construction.md`
 7. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
-9. 必要时 `13-project-cleanup-gate.md`
+9. 必要时 `kun-cleanup-gate` Skill
 10. 必要时 `19-pipeline-loop.md`（本轮在 feature 分支 / worktree 施工时）
 
 ## 禁止
@@ -166,7 +166,7 @@
 6. `10-codex-safe-construction.md`
 7. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 8. `12-verification-git-report.md`
-9. 高复用问题写入 `13-project-cleanup-gate.md` / TROUBLESHOOTING；若形成可复用回归路径，必要时同步到 `ACCEPTANCE.md`
+9. 高复用问题按 `kun-cleanup-gate` 的三层模型归位，或写入 TROUBLESHOOTING；若形成可复用回归路径，必要时同步到 `ACCEPTANCE.md`
 
 > 根因追问：AI 给出 Bug 原因后，按「第一性原理」追问一次——这是表层还是最底层原因？治标还是治本？防止 AI 用类比推理糊一个只治表的补丁（见 SKILL.md「两个通用思维」）。
 
@@ -258,7 +258,7 @@
 2. `09-test-first-gate.md`
 3. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 4. `12-verification-git-report.md`
-5. 验收通过且阶段完成时 `13-project-cleanup-gate.md`
+5. 验收通过且阶段完成时 `kun-cleanup-gate` Skill
 
 > 上线前 / 复杂功能：在正向验收之外，加一道「对抗式审查」——用畸形、超大、时间错乱、空值、并发等异常输入反向找 BUG；工具支持多 Agent / 专项审查时用它，不支持就手动逐条审查。小改不用（命令与详细清单见 SKILL.md「两个通用思维」）。
 
@@ -290,7 +290,7 @@
 5. 按 `12-verification-git-report.md` 选择验证等级；只有选中 V3 时读取 `11-computer-use-e2e-gate.md`
 6. 使用 `12-verification-git-report.md` 汇报验收结果
 7. `19-pipeline-loop.md`（合并、线上冒烟、终态清理）
-8. `13-project-cleanup-gate.md`
+8. `kun-cleanup-gate` Skill
 
 > 上线前对抗式审查：如本次上线涉及用户输入、数据写入、权限、API、爬虫、定时任务或公网访问，在正向验收之外加一道「对抗式审查」（畸形 / 超大 / 时间错乱 / 并发等异常输入反向找 BUG）；纯静态部署或小改不用（详见 SKILL.md「两个通用思维」）。
 
@@ -317,7 +317,7 @@
 
 1. `12-verification-git-report.md`
 2. 自动挡或有待收口分支时：`19-pipeline-loop.md`
-3. 必要时 `13-project-cleanup-gate.md`
+3. 必要时 `kun-cleanup-gate` Skill
 
 ## 禁止
 
@@ -351,12 +351,12 @@
 ## 路由
 
 1. `12-verification-git-report.md`
-2. `13-project-cleanup-gate.md`
+2. 移交 `kun-cleanup-gate` Skill（独立 Skill，不在本仓库 references 内）
 3. 准备新窗口时 `18-handoff-protocol.md`
 
 项目洁癖先确认本轮已经验收，再按“项目文档、项目规则、项目级记忆”三层盘点和同步。
 
-只有发现 Agent 记忆或平台规则时才读取 `13-project-cleanup-platforms.md`；只有发生功能、API、数据、部署、规则审计或反向清理时才读取 `13-project-cleanup-matrix.md`。
+用户直接说"执行洁癖门"时，应由 kun-cleanup-gate 独立响应，不需要先进 Router。
 
 ## 禁止
 
@@ -392,7 +392,7 @@
 1. 如果还没有蓝图，先 `08-architecture-gate.md`
 2. `14-backend-architecture-acceptance.md`
 3. 通过后 `12-verification-git-report.md`
-4. 必要时 `13-project-cleanup-gate.md`
+4. 必要时 `kun-cleanup-gate` Skill
 
 ## 禁止
 
@@ -445,7 +445,7 @@
 ## 路由
 
 1. `18-handoff-protocol.md`
-2. 必要时 `13-project-cleanup-gate.md`
+2. 必要时 `kun-cleanup-gate` Skill
 3. 必要时更新 `PROJECT_STATE.md`
 
 ## 禁止

@@ -44,7 +44,7 @@ Acceptance 负责验收。
 
 这些 Skill / Flow 由用户显式触发，主要用于流程编排。
 
-**重要：除了 Kun Coding Router 本体，下面的 Flow 都不是 references 里的独立文件，而是 Router 内部的流程别名。** 用户说出这些名字时，不要去找同名文件，直接按对应路由走。
+**重要：除 Kun Coding Router 本体和 Kun Cleanup Gate 这两个独立 Skill 外，下面的 Flow 都不是 references 里的独立文件，而是 Router 内部的流程别名。** 用户说出这些名字时，不要去找同名文件，直接按对应路由走。
 
 它们负责回答：
 
@@ -61,6 +61,7 @@ Acceptance 负责验收。
 | New Project Flow | 16 表第 1 节 | 新项目从想法到 AI-SDD / Project Setup |
 | Feature Planning Flow | 16 表第 2 节 | 大功能规格、范围锁定、任务拆解 |
 | Handoff Flow | 18-handoff-protocol.md | 跨窗口交接、生成 HANDOFF.md |
+| Kun Cleanup Gate | kun-cleanup-gate（独立 Skill） | 已验收后的项目三层知识编辑 |
 
 ### 规则
 
@@ -81,7 +82,7 @@ Acceptance 负责验收。
 
 ---
 
-`13-project-cleanup-platforms.md` 和 `13-project-cleanup-matrix.md` 只由 Project Cleanup Gate 按需读取：前者处理平台、记忆归属和权限边界，后者处理同步矩阵、反向清理和规范审计。二者不是用户主动调用型 Skill，也不应被 Router 每轮自动加载。
+`kun-cleanup-gate` 是从 Router 拆出的**用户主动调用型 Skill**：用户高频直接触发（"执行洁癖门 / 收尾"），因此让它独立响应，省掉先进 Router 再路由的绕路开销。它的两个内部细则（平台与记忆边界、同步矩阵）随该 Skill 维护并按需读取，**不应被 Router 每轮自动加载**。Router 仍在 16 表第 9 节保留移交入口，用于走完整流程时的收尾场景。
 
 ---
 

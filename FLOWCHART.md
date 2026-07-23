@@ -1,6 +1,6 @@
-# Kun Coding Router 流程图（V0.8.2）
+# Kun Coding Router 流程图（V0.9.0）
 
-> 这份 V0.8.2 文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
+> 这份 V0.9.0 文档用图带你看懂整个 skill 怎么运转。GitHub 会自动把下面的 Mermaid 代码渲染成图形。
 > 看不懂文字版没关系，先看图，每张图下面都有大白话说明。
 
 ---
@@ -54,7 +54,7 @@ flowchart TD
     P -- 否 --> L
     PL -. 停止/跨窗口/等待清理/DONE .-> STATE[PROJECT_STATE 当前流水线运行状态]
     STATE -. 先核实 Git / gh / CI / 部署平台再恢复 .-> PL
-    L -- 阶段完成 --> M[项目洁癖：三层清理<br/>文档 + 项目规则 + 项目记忆]
+    L -- 阶段完成 --> M[项目洁癖：移交 kun-cleanup-gate<br/>独立 Skill]
     L -- 换窗口继续 --> N[写 HANDOFF.md 交接纸条]
     L -- 都不需要 --> Z[结束]
     M --> M1{删除或越界动作？}
@@ -99,7 +99,7 @@ flowchart LR
     T6[6.验收/测试] --> T6x[唯一顺序见 16 第6节]
     T7[7.部署上线] --> T7x[唯一顺序见 16 第7节]
     T8[8.保存Git] --> T8x[唯一顺序见 16 第8节]
-    T9[9.项目收尾/洁癖] --> T9x[唯一顺序见 16 第9节]
+    T9[9.项目收尾/洁癖] --> T9x[移交 kun-cleanup-gate 独立 Skill]
     T10[10.后端骨架验收] --> T10x[唯一顺序见 16 第10节]
     T11[11.Project Setup] --> T11x[唯一顺序见 16 第11节]
     T12[12.Handoff交接] --> T12x[唯一顺序见 16 第12节]

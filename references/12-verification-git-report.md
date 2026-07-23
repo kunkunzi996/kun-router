@@ -161,7 +161,7 @@ git push
 
 `12-verification-git-report.md` 只负责验收、Git 和完成报告。
 
-如果本轮满足以下任一条件，应继续启用 `13-project-cleanup-gate.md`：
+如果本轮满足以下任一条件，应继续启用 `kun-cleanup-gate` Skill：
 
 - 功能完成或阶段完成。
 - 部署完成。
@@ -263,7 +263,7 @@ git push
 - 待清理：远程分支 / 本地分支 / worktree 绝对路径 / 临时数据（等你确认精确清单后处理）
 
 ## 项目洁癖判断
-- 是否需要进入 `13-project-cleanup-gate.md`：是 / 否
+- 是否需要进入 `kun-cleanup-gate` Skill：是 / 否
 - 原因：
 - 若不进入，说明为什么本轮不影响项目文档和状态：
 
